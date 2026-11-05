@@ -140,7 +140,89 @@ footer .brand img{height:42px}
   .fade{opacity:1;transform:none;transition:none}
   .about .mascot{animation:none}
 }
-.brand img,.about .mascot{border-radius:50%}</style>
+.brand img,.about .mascot{border-radius:50%}
+/* ---- Premium Fryco refresh ---- */
+:root{
+  --purple:#24152d;
+  --purple-dark:#160d1d;
+  --accent:#e7ad4b;
+  --accent-dark:#c88a2e;
+  --bg:#fbf7f0;
+  --card:#fffdf9;
+  --text:#211b24;
+  --muted:#746b75;
+  --radius:22px;
+  --shadow:0 18px 48px rgba(36,21,45,.09);
+  --nav-h:76px;
+}
+body{background:var(--bg);letter-spacing:-.012em}
+.container{width:min(1180px,100% - 3rem)}
+section{padding:5.4rem 0}
+h2{font-size:clamp(2rem,4.5vw,3rem);letter-spacing:-.045em}
+.lead{font-size:1.02rem;line-height:1.8}
+.nav{background:rgba(251,247,240,.88);backdrop-filter:blur(18px);border-bottom:1px solid rgba(36,21,45,.08);box-shadow:0 8px 30px rgba(36,21,45,.035)}
+.brand{font-size:1.55rem;letter-spacing:.12em}
+.brand img{height:54px}
+.nav ul{gap:2.1rem}
+.nav ul a{font-size:.92rem;color:#554b58}
+.nav ul a:hover{color:var(--purple)}
+.btn{padding:.95rem 1.75rem;font-size:.92rem;letter-spacing:.01em;box-shadow:none}
+.btn-primary{background:var(--purple);box-shadow:0 10px 24px rgba(36,21,45,.18)}
+.btn-primary:hover{background:#392345;box-shadow:0 14px 28px rgba(36,21,45,.22)}
+.btn-accent{background:linear-gradient(135deg,#f2c875,#d99b3f);color:#24152d;box-shadow:0 10px 24px rgba(207,151,62,.22)}
+.btn-accent:hover{background:linear-gradient(135deg,#f6d58e,#d99b3f)}
+.hero{padding:2rem 0 5rem;background:radial-gradient(ellipse at 50% 0%,#fff 0%,#fbf7f0 68%)}
+.hero-img{border-radius:30px;box-shadow:0 28px 70px rgba(36,21,45,.16);margin-bottom:2.8rem;position:relative}
+.hero-img:after{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.22);border-radius:inherit;pointer-events:none}
+.hero-img img{width:100%;max-height:520px;object-fit:cover}
+.hero-text{max-width:760px;margin-inline:auto}
+.hero-text h1{font-size:clamp(2.5rem,6.2vw,4.8rem);letter-spacing:-.065em;line-height:1.02;color:var(--purple)}
+.hero-text p{font-size:1.08rem;line-height:1.8;max-width:55ch;margin:1.2rem auto 1.8rem}
+.hero-actions{gap:1rem}
+#menu{background:#fffdf9}
+.tabs{gap:.75rem;padding:.5rem .2rem 1.3rem}
+.tab{border:1px solid rgba(36,21,45,.18);background:#fffdf9;color:#4d4053;padding:.72rem 1.3rem;font-size:.88rem;box-shadow:0 4px 12px rgba(36,21,45,.035)}
+.tab.active,.tab:hover{background:var(--purple);border-color:var(--purple);color:#fff}
+.cat{margin-top:2.8rem}
+.cat h3{font-size:1.45rem;letter-spacing:-.03em;border-left:3px solid var(--accent);padding-left:1rem}
+.grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.15rem}
+.card{border:1px solid rgba(36,21,45,.08);border-radius:20px;padding:1.45rem;box-shadow:0 8px 25px rgba(36,21,45,.045);min-height:138px}
+.card:hover{transform:translateY(-5px);border-color:rgba(231,173,75,.8);box-shadow:0 18px 36px rgba(36,21,45,.1)}
+.card h4{font-size:1.05rem;letter-spacing:-.02em}
+.price{font-size:1.35rem}
+.card.combo{background:linear-gradient(145deg,#30203a,#1d1126);border-color:rgba(231,173,75,.25)}
+.opts li{padding-top:.45rem;border-color:rgba(36,21,45,.12)}
+.about{background:radial-gradient(circle at 85% 20%,#4b3155 0%,transparent 35%),linear-gradient(135deg,#24152d,#160d1d);padding:6rem 0}
+.about h2{color:#f0c574}
+.about p{font-size:1.02rem;line-height:1.9;color:#eee5ef}
+.about .mascot{width:min(290px,68%);filter:drop-shadow(0 24px 34px rgba(0,0,0,.35))}
+.loc-info,.contact-card{border:1px solid rgba(36,21,45,.07);border-radius:22px;box-shadow:0 12px 34px rgba(36,21,45,.06)}
+.loc-info{padding:2.1rem}
+.loc-info h3{font-size:1.35rem;letter-spacing:-.03em}
+.map{border-radius:22px;box-shadow:0 16px 40px rgba(36,21,45,.1)}
+.contact-card{padding:1.8rem;transition:transform .25s,border-color .25s,box-shadow .25s}
+.contact-card:hover{transform:translateY(-6px);border-color:rgba(231,173,75,.75);box-shadow:0 18px 38px rgba(36,21,45,.1)}
+.contact-card .ico{background:linear-gradient(135deg,#f2c875,#d99b3f)}
+.contact-card b{font-size:1.05rem}
+footer{background:#160d1d;border-top:1px solid rgba(231,173,75,.55);padding:2.5rem 0}
+.fab{background:linear-gradient(135deg,#f2c875,#d99b3f);box-shadow:0 12px 30px rgba(36,21,45,.24)}
+@media(max-width:760px){
+  .container{width:min(100% - 2rem,1180px)}
+  section{padding:4rem 0}
+  .hero{padding:1rem 0 3.5rem}
+  .hero-img{border-radius:20px;margin-bottom:2rem}
+  .hero-img img{min-height:220px;object-fit:cover}
+  .hero-text h1{font-size:clamp(2.35rem,11vw,3.5rem)}
+  .nav{height:68px}
+  .nav ul{background:rgba(251,247,240,.98);backdrop-filter:blur(16px)}
+  .about{padding:4.5rem 0}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+</style>
 </head>
 <body>
 
@@ -228,7 +310,7 @@ footer .brand img{height:42px}
           <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.2 2 11.5c0 3 1.5 5.6 3.8 7.3V22l3.5-1.9c.9.3 1.8.4 2.7.4 5.5 0 10-4.2 10-9.5S17.5 2 12 2zm1 12.8-2.6-2.8-5 2.8 5.500-5.800 2.600 2.800 5-2.800z"/></svg></div>
           <b>Messenger</b><span>FRYCO Bangladesh</span>
         </a>
-        <a class="contact-card" href="https://www.facebook.com/fryco_bangladesh" target="_blank" rel="noopener">
+        <a class="contact-card" href="https://www.facebook.com/share/1FiaABMrrg/?mibextid=wwXIfr" target="_blank" rel="noopener">
           <div class="ico"><svg viewBox="0 0 24 24"><path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.9.4-1.7 1.8-1.7h1.6V3.8A20 20 0 0 0 14.600 3.700c-2.700 0-4.400 1.600-4.400 4.500v2.300H7.400v3.300h2.800V22z"/></svg></div>
           <b>Facebook</b><span>fryco_bangladesh</span>
         </a>
