@@ -243,6 +243,26 @@ footer{background:#160d1d;border-top:1px solid rgba(231,173,75,.55);padding:2.5r
 .inside-fryco .inside-photo figcaption{padding:14px 18px;text-align:center;color:var(--purple,#4b2348);font-size:.95rem}
 @media(max-width:600px){.inside-fryco .inside-photo{border-radius:16px;margin-top:1.4rem}.inside-fryco .inside-photo figcaption{font-size:.88rem;padding:12px}}
 
+
+/* ---- Fryco editorial food gallery ---- */
+.fryco-gallery{padding:clamp(4.5rem,8vw,7rem) 0;background:linear-gradient(180deg,#fffaf3 0%,#f7efe5 100%);overflow:hidden}
+.gallery-heading{max-width:720px;margin:0 auto 2.6rem;text-align:center}
+.gallery-heading .eyebrow{display:inline-block;margin-bottom:.8rem;color:#a87936;font-size:.72rem;font-weight:800;letter-spacing:.2em}
+.gallery-heading h2{margin-bottom:.7rem}
+.food-gallery{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:clamp(150px,19vw,235px);gap:16px}
+.food-shot{position:relative;grid-column:span 4;grid-row:span 1;margin:0;overflow:hidden;border-radius:20px;background:#e8ddd0;isolation:isolate;box-shadow:0 12px 32px rgba(47,25,37,.09)}
+.food-shot-feature{grid-column:span 8;grid-row:span 2}
+.food-shot-wide{grid-column:span 8}
+.food-shot img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .75s cubic-bezier(.2,.7,.2,1),filter .5s}
+.food-shot:after{content:"";position:absolute;inset:30% 0 0;background:linear-gradient(180deg,transparent 0%,rgba(24,14,20,.78) 100%);z-index:0;pointer-events:none}
+.food-shot figcaption{position:absolute;z-index:1;left:0;right:0;bottom:0;padding:25px 22px 20px;color:#fff;display:flex;flex-direction:column;gap:4px}
+.food-shot figcaption strong{font-family:Georgia,serif;font-size:clamp(1.05rem,1.7vw,1.45rem);font-weight:600;letter-spacing:-.02em}
+.food-shot figcaption span{font-size:.84rem;color:rgba(255,255,255,.82)}
+@media(hover:hover){.food-shot:hover img{transform:scale(1.055);filter:saturate(1.08)}}
+@media(max-width:760px){.food-gallery{grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:clamp(145px,31vw,205px);gap:10px}.food-shot{grid-column:span 3;border-radius:15px}.food-shot-feature,.food-shot-wide{grid-column:span 6}.food-shot-feature{grid-row:span 2}.food-shot figcaption{padding:18px 14px 14px}.food-shot figcaption span{font-size:.76rem}}
+@media(max-width:420px){.food-gallery{grid-auto-rows:145px;gap:9px}.food-shot-feature{grid-row:span 2}.food-shot figcaption strong{font-size:1rem}.food-shot figcaption span{font-size:.72rem}}
+@media(prefers-reduced-motion:reduce){.food-shot img{transition:none}}
+
 </style>
 </head>
 <body>
@@ -282,6 +302,28 @@ footer{background:#160d1d;border-top:1px solid rgba(231,173,75,.55);padding:2.5r
         <p class="lead">Fried fresh to order. All prices are in Bangladeshi Taka (৳) and include VAT.</p>
       </div>
       <div id="menu-root"></div>
+    </div>
+  </section>
+
+  <section id="fryco-gallery" class="fryco-gallery">
+    <div class="container">
+      <div class="gallery-heading fade">
+        <span class="eyebrow">MADE TO MAKE YOU CRAVE</span>
+        <h2>A little taste of Fryco</h2>
+        <p class="lead">Crispy favourites, feel-good sips and the place where it all comes together.</p>
+      </div>
+      <div class="food-gallery">
+        <figure class="food-shot food-shot-feature fade"><img src="fryco-combo.jpg" alt="A Fryco meal combo with a selection of favourites" loading="lazy" decoding="async"><figcaption><strong>The Fryco combo</strong><span>A little bit of everything you love</span></figcaption></figure>
+        <figure class="food-shot fade"><img src="fried-chicken.jpg" alt="Golden crispy fried chicken from Fryco" loading="lazy" decoding="async"><figcaption><strong>Golden crispy chicken</strong><span>Fresh, crunchy and full of flavour</span></figcaption></figure>
+        <figure class="food-shot fade"><img src="chicken-burger.jpg" alt="Fryco chicken burger" loading="lazy" decoding="async"><figcaption><strong>Burger cravings</strong><span>Big flavour in every bite</span></figcaption></figure>
+        <figure class="food-shot fade"><img src="chicken-burger-detail.jpg" alt="A closer look at a Fryco chicken burger" loading="lazy" decoding="async"><figcaption><strong>Made to savour</strong><span>A closer look at the good stuff</span></figcaption></figure>
+        <figure class="food-shot fade"><img src="chicken-wings.jpg" alt="Fryco chicken wings" loading="lazy" decoding="async"><figcaption><strong>Wing time</strong><span>Bring on the flavour</span></figcaption></figure>
+        <figure class="food-shot fade"><img src="chicken-strips.jpg" alt="Crispy chicken strips from Fryco" loading="lazy" decoding="async"><figcaption><strong>Crispy strips</strong><span>Perfect for sharing — or not</span></figcaption></figure>
+        <figure class="food-shot fade"><img src="french-fries.jpg" alt="Fryco golden french fries" loading="lazy" decoding="async"><figcaption><strong>Golden sides</strong><span>Every great meal needs a sidekick</span></figcaption></figure>
+        <figure class="food-shot fade"><img src="chocolate-milkshake.jpg" alt="Chocolate milkshake from Fryco" loading="lazy" decoding="async"><figcaption><strong>Shake things up</strong><span>A chilled chocolate treat</span></figcaption></figure>
+        <figure class="food-shot fade"><img src="fryco-coffee.jpg" alt="Freshly prepared coffee at Fryco" loading="lazy" decoding="async"><figcaption><strong>Coffee moments</strong><span>Your little pick-me-up</span></figcaption></figure>
+        <figure class="food-shot food-shot-wide fade"><img src="fryco-exterior.jpg" alt="The exterior of Fryco Bangladesh in Satkhira" loading="lazy" decoding="async"><figcaption><strong>Come find us</strong><span>Your Fryco stop in Satkhira</span></figcaption></figure>
+      </div>
     </div>
   </section>
 
