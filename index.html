@@ -169,6 +169,46 @@ footer{background:#160d1d;border-top:1px solid rgba(231,173,75,.55);padding:2.5r
 .hero-text h1{font-size:clamp(2.35rem,11vw,3.5rem)}.nav{height:68px}.nav ul{background:rgba(251,247,240,.98);backdrop-filter:blur(16px)}.about{padding:4.5rem 0}.contact-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
+
+/* ---- Premium motion polish ---- */
+@media (prefers-reduced-motion:no-preference) {
+  .hero-img { animation:heroImageIn .95s cubic-bezier(.2,.75,.25,1) both; }
+  .hero-text h1 { animation:softRise .8s .12s both; }
+  .hero-text p { animation:softRise .8s .24s both; }
+  .hero-actions { animation:softRise .8s .36s both; }
+  .brand img { transition:transform .55s cubic-bezier(.2,.8,.2,1); }
+  .brand:hover img { transform:rotate(-7deg) scale(1.06); }
+  .nav ul a { position:relative; transition:color .25s ease; }
+  .nav ul a:after { content:""; position:absolute; left:0; right:100%; bottom:-5px; height:2px; background:var(--accent); transition:right .3s cubic-bezier(.2,.8,.2,1); }
+  .nav ul a:hover:after { right:0; }
+  .btn { transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s ease,background .3s ease; }
+  .btn:active { transform:translateY(1px) scale(.98); }
+  .tab { transition:transform .25s ease,background .25s ease,color .25s ease,box-shadow .25s ease; }
+  .tab:hover { transform:translateY(-2px); }
+  .tab.active { box-shadow:0 7px 18px rgba(36,21,45,.13); }
+  .card,.contact-card,.loc-info { transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .35s ease,box-shadow .4s ease; }
+  .grid .card { animation:cardEnter .65s cubic-bezier(.2,.75,.25,1) both; }
+  .grid .card:nth-child(2) { animation-delay:.06s; }
+  .grid .card:nth-child(3) { animation-delay:.12s; }
+  .grid .card:nth-child(4) { animation-delay:.18s; }
+  .grid .card:nth-child(5) { animation-delay:.24s; }
+  .grid .card:nth-child(6) { animation-delay:.30s; }
+  .contact-card .ico { transition:transform .35s cubic-bezier(.2,.8,.2,1); }
+  .contact-card:hover .ico { transform:translateY(-3px) rotate(-6deg); }
+  .fab { animation:fabArrive .7s .7s cubic-bezier(.2,.8,.2,1) both; }
+  .fade.show > * { animation:softRise .7s cubic-bezier(.2,.75,.25,1) both; }
+  .fade.show > *:nth-child(2) { animation-delay:.08s; }
+  .fade.show > *:nth-child(3) { animation-delay:.16s; }
+  .fade.show > *:nth-child(4) { animation-delay:.24s; }
+}
+@keyframes softRise { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+@keyframes heroImageIn { from { opacity:0; transform:translateY(20px) scale(.985); } to { opacity:1; transform:translateY(0) scale(1); } }
+@keyframes cardEnter { from { opacity:0; transform:translateY(16px) scale(.985); } to { opacity:1; transform:translateY(0) scale(1); } }
+@keyframes fabArrive { from { opacity:0; transform:translateY(12px) scale(.9); } to { opacity:1; transform:translateY(0) scale(1); } }
+@media (prefers-reduced-motion:reduce) {
+  .hero-img,.hero-text h1,.hero-text p,.hero-actions,.grid .card,.fab,.fade.show > * { animation:none!important; }
+}
+
 </style>
 </head>
 <body>
@@ -361,10 +401,19 @@ links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
 }));
 
 // ---- Fade-in on scroll ----
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
-}, {threshold:.12});
-document.querySelectorAll('.fade').forEach(el => io.observe(el));
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('show');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.fade').forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('.fade').forEach(el => el.classList.add('show'));
+}
 
 // ---- Footer year ----
 document.getElementById('year').textContent = new Date().getFullYear();
