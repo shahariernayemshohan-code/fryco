@@ -54,7 +54,6 @@
     <div class="tabs" role="tablist" aria-label="Menu categories"></div>
     <div class="menu-tools">
       <label class="menu-search-wrap">
-        <span class="skip-link">Search the complete menu</span>
         <input class="menu-search" type="search" placeholder="Find a dish or drink…" aria-label="Search all menu items" autocomplete="off">
         <svg class="menu-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>
       </label>
@@ -75,7 +74,7 @@
   const searchStatus = menuRoot.querySelector(".menu-search-status");
   let activeIndex = 0;
 
-  function renderGroups(category, categoryIndex, query) {
+  function renderGroups(category, query) {
     const groups = category.groups.map(group => {
       const matchingItems = group.items.filter(item => {
         const haystack = [item.name, item.description, ...(Array.isArray(item.price) ? item.price.map(option => option[0]) : [])].join(" ").toLocaleLowerCase();
@@ -107,7 +106,7 @@
     searchStatus.textContent = "";
     panel.setAttribute("aria-labelledby", `menu-tab-${selectedIndex}`);
     panel.classList.remove("is-changing");
-    panel.innerHTML = renderGroups(category, selectedIndex, "");
+    panel.innerHTML = renderGroups(category, "");
 
     void panel.offsetWidth;
     panel.classList.add("is-changing");
@@ -135,8 +134,8 @@
       }));
       count += categoryGroups.reduce((sum, items) => sum + items.length, 0);
       const filteredCategory = {...category, groups: category.groups.map((group, groupIndex) => ({...group, items: categoryGroups[groupIndex]}))};
-      const content = renderGroups(filteredCategory, index, query);
-      return content ? `<div class="search-category"><h3 class="cat h3">${escapeHtml(category.name)}</h3>${content}</div>` : "";
+      const content = renderGroups(filteredCategory, query);
+      return content ? `<div class="search-category"><h3 class="search-category-title">${escapeHtml(category.name)}</h3>${content}</div>` : "";
     }).join("");
 
     searchStatus.textContent = `${count} ${count === 1 ? "item" : "items"}`;
