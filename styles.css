@@ -58,7 +58,7 @@ h2 em,h1 em{color:var(--orange);font-style:normal}
 .btn-dark:hover{background:var(--brown-deep)}
 .hero-call{font-size:.82rem;font-weight:900;border-bottom:2px solid var(--brown);padding:5px 0}
 .hero-note{display:flex;align-items:center;gap:12px;margin-top:clamp(42px,6vw,78px);font-size:.59rem;font-weight:900;letter-spacing:.13em;line-height:1.55}
-.note-mark{display:grid;place-items:center;width:36px;height:36px;border:1px solid rgba(72,39,25,.5);border-radius:50%;font-size:1.2rem}
+
 .hero-visual{position:relative;max-width:570px;margin-left:auto;padding:0 24px 28px 0}
 .hero-photo-frame{position:relative;overflow:hidden;aspect-ratio:1.02;border:9px solid var(--cream);border-radius:48% 48% 12px 12px;box-shadow:18px 22px 0 rgba(72,39,25,.16);background:var(--sand)}
 .hero-photo-frame img{width:100%;height:100%;object-fit:cover}
@@ -123,7 +123,7 @@ h2 em,h1 em{color:var(--orange);font-style:normal}
 .story-image{position:relative;padding:0 26px 26px 0}
 .story-image img{width:100%;height:clamp(370px,48vw,590px);object-fit:cover;border-radius:13px}
 .story-image:after{position:absolute;z-index:0;right:0;bottom:0;width:72%;height:70%;border:2px solid var(--orange);border-radius:13px;content:"";pointer-events:none}
-.story-stamp{position:absolute;right:-14px;top:10%;display:grid;place-content:center;width:104px;height:104px;border-radius:50%;background:var(--orange);color:white;text-align:center;font-size:.65rem;font-weight:900;line-height:1.25;letter-spacing:.07em;transform:rotate(9deg)}
+
 .story-copy{position:relative;z-index:1}
 .story-copy h2{color:var(--cream);font-size:clamp(3.5rem,6vw,6.3rem)}
 .story-copy h2 em{color:var(--orange)}
