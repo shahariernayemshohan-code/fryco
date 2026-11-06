@@ -211,7 +211,8 @@ footer p{margin:0;font-size:.72rem}
  #menu>.container{padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
  .fab{display:inline-flex}
 }
-@media(max-width:540px){.hero-text h1{font-size:clamp(3.4rem,15vw,3.7rem)}.hero-actions{align-items:stretch;flex-direction:column}.hero-actions .btn{width:100%}.grid,.contact-grid{grid-template-columns:1fr}.food-shot,.food-shot-feature,.food-shot-wide{grid-column:span 6}}
+@media(max-width:540px){.grid,.contact-grid{grid-template-columns:1fr}}
+@media(max-width:390px){.hero-text h1{font-size:3.7rem}.hero-actions{align-items:stretch;flex-direction:column}.hero-actions .btn{width:100%}.food-shot,.food-shot-feature,.food-shot-wide{grid-column:span 6}}
 
 /* Short landscape viewports: keep the first screen usable without clipping. */
 @media(max-height:520px) and (orientation:landscape){
