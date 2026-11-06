@@ -79,6 +79,7 @@
     });
 
     panel.setAttribute("aria-labelledby", `menu-tab-${selectedIndex}`);
+    panel.classList.remove("is-changing");
     panel.innerHTML = category.groups.map(group => {
       const heading = group.title
         ? `<h3>${escapeHtml(group.title)}</h3>`
@@ -95,6 +96,9 @@
         </section>
       `;
     }).join("");
+
+    void panel.offsetWidth;
+    panel.classList.add("is-changing");
   }
 
   function handleTabKeydown(event, currentIndex) {
