@@ -5,6 +5,10 @@
   --brown:#4a281b;--brown-deep:#26140e;--brown-mid:#68412e;
   --cream:#fff1dc;--paper:#fffaf2;--sand:#ead5bc;--gold:#eab65d;
   --ink:#321b12;--muted:#765f51;--line:rgba(74,40,27,.16);
+  --brand-orange:var(--orange);--brand-orange-light:var(--orange-soft);
+  --brand-orange-dark:var(--orange-deep);--espresso:var(--brown-deep);
+  --roast:var(--brown);--warm-cream:#fff7eb;
+  --soft-cream:var(--cream);--caramel:var(--gold);
   --sans:"DM Sans",Arial,sans-serif;--display:"Playfair Display",Georgia,serif;
   --content:1200px;--nav-height:78px;--ease:cubic-bezier(.2,.75,.25,1);
 }
@@ -281,16 +285,6 @@ h2 em,h1 em{color:var(--orange);font-style:normal}
 }
 
 /* Brand theme refinements — intentional component-level overrides */
-:root{
-  --brand-orange:#e9652b;
-  --brand-orange-light:#f58a52;
-  --brand-orange-dark:#b83f19;
-  --espresso:#26140e;
-  --roast:#4a281b;
-  --warm-cream:#fff7eb;
-  --soft-cream:#fff1dc;
-  --caramel:#eab65d;
-}
 body{
   background:var(--warm-cream);
   color:var(--espresso);
