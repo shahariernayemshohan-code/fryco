@@ -4,11 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FRYCO — Made for the Craving | Satkhira</title>
-<meta name="description" content="Discover Fryco in Satkhira: crispy fried chicken, signature burgers, rice bowls, coffee and feel-good favourites. Dine in or take away.">
+<meta name="description" content="Discover FRYCO in Satkhira: golden crispy chicken, signature burgers, rice bowls, coffee, shakes and feel-good favourites. Explore our menu and visit us.">
+<link rel="canonical" href="https://shahariernayemshohan-code.github.io/fryco/">
+<link rel="preload" as="image" href="fryco-hero.jpg" fetchpriority="high">
 <meta name="theme-color" content="#211326">
 <meta property="og:type" content="website">
 <meta property="og:title" content="FRYCO — Made for the Craving.">
-<meta property="og:description" content="Golden crispy favourites, signature burgers and feel-good sips in Satkhira.">
+<meta property="og:description" content="Discover golden crispy favourites, signature burgers and feel-good sips at FRYCO in Satkhira.">
 <meta property="og:url" content="https://shahariernayemshohan-code.github.io/fryco/">
 <meta property="og:image" content="https://shahariernayemshohan-code.github.io/fryco/fryco-hero.jpg">
 <script type="application/ld+json">
@@ -430,7 +432,7 @@ footer{background:#160d1d;border-top:1px solid rgba(217,168,79,.4);padding:36px 
 <header class="nav">
   <div class="container">
     <a href="#top" class="brand"><img src="fryco-logo.jpg" alt="Fryco chicken mascot logo"><span>FRYCO</span></a>
-    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <button type="button" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
     <ul id="navlinks">
       <li><a href="#menu">Menu</a></li>
       <li><a href="#about">About</a></li>
@@ -629,23 +631,26 @@ const card=(i,combo)=>{
   return `<div class="card${combo?' combo':''}"><div><h4>${i.n}</h4>${i.d?`<p class="desc">${i.d}</p>`:''}</div>${price}</div>`;
 };
 const root=document.getElementById('menu-root');
-root.innerHTML='<div class="tabs" role="tablist"></div><div class="panel"></div><p class="note">All prices include VAT.</p>';
+root.innerHTML='<div class="tabs" role="tablist" aria-label="Menu categories"></div><div class="panel" id="menu-panel" role="tabpanel" aria-live="polite"></div><p class="note">All prices include VAT.</p>';
 const tabsEl=root.querySelector('.tabs'), panel=root.querySelector('.panel');
 function show(idx){
   const c=MENU[idx];
-  tabsEl.querySelectorAll('.tab').forEach((b,i)=>{b.classList.toggle('active',i===idx);b.setAttribute('aria-selected',i===idx)});
+  tabsEl.querySelectorAll('.tab').forEach((b,i)=>{b.classList.toggle('active',i===idx);b.setAttribute('aria-selected',i===idx?'true':'false');b.tabIndex=i===idx?0:-1});
   panel.innerHTML=c.groups.map(g=>`<div class="cat">${g.title?`<h3>${g.title}</h3>`:''}<div class="grid">${g.items.map(i=>card(i,c.combo)).join('')}</div></div>`).join('');
 }
 MENU.forEach((c,i)=>{
   const b=document.createElement('button');
-  b.className='tab';b.type='button';b.role='tab';b.textContent=c.name;
-  b.addEventListener('click',()=>show(i));tabsEl.appendChild(b);
+  b.className='tab';b.type='button';b.role='tab';b.id='menu-tab-'+i;b.setAttribute('aria-controls','menu-panel');b.setAttribute('aria-selected',i===0?'true':'false');b.tabIndex=i===0?0:-1;b.textContent=c.name;
+  b.addEventListener('click',()=>show(i));
+  b.addEventListener('keydown',e=>{let next=i;if(e.key==='ArrowRight')next=(i+1)%MENU.length;else if(e.key==='ArrowLeft')next=(i-1+MENU.length)%MENU.length;else if(e.key==='Home')next=0;else if(e.key==='End')next=MENU.length-1;else return;e.preventDefault();const target=tabsEl.querySelectorAll('.tab')[next];target.focus();show(next);});
+  tabsEl.appendChild(b);
 });
 show(0);
 
 // ---- Mobile nav ----
 const toggle = document.querySelector('.menu-toggle');
 const links = document.getElementById('navlinks');
+if (toggle && links) {
 toggle.addEventListener('click', () => {
   const open = links.classList.toggle('open');
   toggle.setAttribute('aria-expanded', open);
@@ -653,6 +658,7 @@ toggle.addEventListener('click', () => {
 links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   links.classList.remove('open'); toggle.setAttribute('aria-expanded', false);
 }));
+}
 
 // ---- Fade-in on scroll ----
 if ('IntersectionObserver' in window) {
