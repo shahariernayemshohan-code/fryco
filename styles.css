@@ -468,3 +468,15 @@ body{
 @media(max-width:680px){
   .hero-copy>.hero-tagline{max-width:390px;margin-top:17px;font-size:clamp(1.2rem,5vw,1.45rem)}
 }
+
+/* Keep the highlighted GREAT comfortably within the headline */
+.hero h1 em{
+  display:inline-block;
+  font-size:.76em;
+  line-height:1;
+  padding:.07em .13em .11em;
+  margin-right:.06em;
+  vertical-align:.08em;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
