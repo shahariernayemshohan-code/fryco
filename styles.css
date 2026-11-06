@@ -109,6 +109,41 @@ h2 em,h1 em{color:var(--orange);font-style:normal}
 .menu-footnote{margin:18px 0 0;color:var(--muted);font-size:.7rem}
 .menu-empty{padding:30px;border:1px dashed var(--line);border-radius:12px;color:var(--muted);text-align:center}
 .search-category{margin-bottom:24px}.search-category-title{font-size:1.7rem}
+/* Menu cards — food photography leads, details and prices follow */
+.card{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:0;
+  min-height:0;
+  padding:0;
+  overflow:hidden;
+}
+.card-image{
+  display:block;
+  width:100%;
+  aspect-ratio:16/10;
+  object-fit:cover;
+  background:var(--sand);
+}
+.card-content{
+  display:flex;
+  flex:1;
+  flex-direction:column;
+  align-items:stretch;
+  gap:12px;
+  min-width:0;
+  padding:16px 17px 17px;
+}
+.card-copy{min-width:0}
+.card .price{align-self:flex-start;margin-top:auto}
+.card .opts{width:100%;grid-column:auto;margin-top:auto}
+.card.combo .card-image{aspect-ratio:16/10}
+@media(max-width:680px){
+  .card-content{gap:10px;padding:12px 12px 13px}
+  .card-image{aspect-ratio:4/3}
+}
+
 /* Photo gallery */
 .gallery-section{background:var(--paper)}
 .gallery-heading h2{margin-bottom:0}
