@@ -23,10 +23,25 @@
     navigation.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", closeNavigation);
     });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeNavigation();
+    });
+
+    document.addEventListener("click", event => {
+      if (!navigation.classList.contains("open")) return;
+      if (navigation.contains(event.target) || menuButton.contains(event.target)) return;
+      closeNavigation();
+    });
   }
 
   function revealPageSections() {
     const elements = document.querySelectorAll(".fade");
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      elements.forEach(element => element.classList.add("show"));
+      return;
+    }
 
     if (!("IntersectionObserver" in window)) {
       elements.forEach(element => element.classList.add("show"));
