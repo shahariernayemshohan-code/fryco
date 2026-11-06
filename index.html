@@ -586,6 +586,52 @@ footer{padding:1.8rem 0}
   .food-gallery{grid-auto-rows:132px}
 }
 
+
+/* ---- Menu unified in Fryco signature combo palette ---- */
+#menu .card,
+#menu .card.combo{
+  background:linear-gradient(145deg,#33213b 0%,#1d1124 100%);
+  color:#fff;
+  border:1px solid rgba(217,173,104,.34);
+  box-shadow:0 8px 22px rgba(33,19,38,.09);
+}
+#menu .card h4,
+#menu .card.combo h4{color:#fff}
+#menu .card .desc,
+#menu .card.combo .desc{color:#d2c3d3}
+#menu .card .price,
+#menu .card .opts b,
+#menu .card.combo .price,
+#menu .card.combo .opts b{color:#e8bf7e}
+#menu .card .opts li,
+#menu .card.combo .opts li{color:#eee5ee;border-color:rgba(255,255,255,.16)}
+#menu .card:hover,
+#menu .card.combo:hover{
+  border-color:rgba(232,191,126,.85);
+  box-shadow:0 14px 30px rgba(33,19,38,.16);
+}
+/* ---- Compact opening: let the copy determine the height ---- */
+.hero{min-height:0;height:auto;padding:0}
+.hero .container{min-height:0}
+.hero-text{padding:clamp(58px,8vh,88px) 24px clamp(62px,8vh,92px)}
+.hero-kicker{margin-bottom:18px}
+.hero-text h1{font-size:clamp(3.1rem,7.3vw,5.8rem);line-height:1}
+.hero-text p{margin:19px auto 24px;line-height:1.72}
+.hero-actions{gap:11px}
+@media(max-width:680px){
+  .hero{min-height:0;height:auto}
+  .hero-text{padding:58px 23px 62px}
+  .hero-kicker{margin-bottom:17px}
+  .hero-text h1{font-size:clamp(3rem,12vw,4.35rem);line-height:1.02}
+  .hero-text p{margin:17px auto 22px;font-size:.88rem;line-height:1.65}
+  .hero-actions{gap:9px}
+}
+@media(max-width:380px){
+  .hero-text{padding:50px 19px 54px}
+  .hero-text h1{font-size:clamp(2.8rem,12vw,3.5rem)}
+  .hero .btn{padding:12px 12px;font-size:.58rem}
+}
+
 </style>
 </head>
 <body>
