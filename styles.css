@@ -4,18 +4,37 @@
 */
 
 :root {
-  --purple: #4B2A5E;
-  --purple-dark: #361d45;
-  --accent: #F5A623;
-  --accent-dark: #d98d0f;
-  --bg: #fffaf3;
-  --card: #ffffff;
-  --text: #2b2233;
-  --muted: #6f6578;
-  --radius: 18px;
-  --shadow: 0 8px 24px rgba(75,42,94,.10);
-  --nav-h: 68px
+  /* FRYCO signature palette */
+  --purple: #ef4b23;
+  --purple-dark: #a92f20;
+  --accent: #ffc928;
+  --accent-dark: #e99a12;
+
+  /* Surfaces and typography */
+  --bg: #fff6ed;
+  --card: #fffdf9;
+  --text: #2b211d;
+  --muted: #74645c;
+
+  /* Shared layout and effects */
+  --radius: 24px;
+  --shadow: 0 14px 38px rgba(89,42,23,.10);
+  --nav-h: 82px;
+
+  /* Editorial supporting colours */
+  --ink: #201321;
+  --cream: #f7f1e8;
+  --paper: #fffdf8;
+  --gold: #d9a84f;
+  --gold2: #f0cf8b;
+  --line: rgba(32,19,33,.12);
+
+  /* Font families */
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "DM Sans", Arial, sans-serif;
 }
+
+
 
 * {
   box-sizing: border-box;
@@ -619,21 +638,6 @@ html {
 .brand img,
 .about .mascot {
   border-radius: 50%
-}
-
-/* ---- Premium Fryco refresh ---- */
-:root {
-  --purple: #24152d;
-  --purple-dark: #160d1d;
-  --accent: #e7ad4b;
-  --accent-dark: #c88a2e;
-  --bg: #fbf7f0;
-  --card: #fffdf9;
-  --text: #211b24;
-  --muted: #746b75;
-  --radius: 22px;
-  --shadow: 0 18px 48px rgba(36,21,45,.09);
-  --nav-h: 76px
 }
 
 body {
@@ -1273,21 +1277,6 @@ from {
   }
 }
 
-/* ===== FRYCO SIGNATURE REDESIGN ===== */
-:root {
-  --purple: #211326;
-  --purple-dark: #160d1b;
-  --accent: #d9ad68;
-  --accent-dark: #bd8b45;
-  --bg: #f7f3ec;
-  --card: #fffefa;
-  --text: #241d25;
-  --muted: #766d75;
-  --radius: 24px;
-  --shadow: 0 22px 60px rgba(33,19,38,.09);
-  --nav-h: 78px
-}
-
 html {
   scroll-padding-top: 90px
 }
@@ -1899,21 +1888,6 @@ footer p {
   .fade.show>* {
     animation: none!important
   }
-}
-
-/* FRYCO — editorial premium art direction */
-:root {
-  --ink: #201321;
-  --ink2: #2c1b30;
-  --cream: #f7f1e8;
-  --paper: #fffdf8;
-  --gold: #d9a84f;
-  --gold2: #f0cf8b;
-  --muted: #786d75;
-  --line: rgba(32,19,33,.12);
-  --serif: "Playfair Display",Georgia,serif;
-  --sans: "DM Sans",Arial,sans-serif;
-  --nav-h: 82px
 }
 
 body {
@@ -3757,19 +3731,6 @@ section {
     padding: 12px 12px;
     font-size: .58rem
   }
-}
-
-/* ---- FRYCO signature orange identity ---- */
-:root {
-  --purple: #ef4b23;
-  --purple-dark: #a92f20;
-  --accent: #ffc928;
-  --accent-dark: #e99a12;
-  --bg: #fff6ed;
-  --card: #fffdf9;
-  --text: #2b211d;
-  --muted: #74645c;
-  --shadow: 0 14px 38px rgba(89,42,23,.10)
 }
 
 /* Warm, welcoming base */
