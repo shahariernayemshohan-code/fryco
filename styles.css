@@ -102,7 +102,7 @@ h3{font:600 clamp(1.6rem,2.6vw,2.15rem)/1.05 var(--serif)}
 .food-shot figcaption strong{color:var(--plum);font:600 1.38rem/1.1 var(--serif)}
 .food-shot figcaption span{color:var(--muted);font-size:.75rem}
 /* Interactive menu */
-#menu{overflow:hidden;background:linear-gradient(135deg,#eee3d7,#e8d9ca)}
+#menu{overflow:visible;background:linear-gradient(135deg,#eee3d7,#e8d9ca)}
 #menu>.container>.fade{max-width:700px}
 #menu h2{color:var(--plum)}
 #menu .lead{color:#71635c}
@@ -110,19 +110,19 @@ h3{font:600 clamp(1.6rem,2.6vw,2.15rem)/1.05 var(--serif)}
 .tab{flex:0 0 auto;min-height:46px;padding:10px 20px;border:1px solid rgba(40,29,43,.22);border-radius:999px;background:rgba(251,247,240,.3);color:#493b49;cursor:pointer;font-size:.72rem;font-weight:800;transition:color .4s var(--ease),background .4s var(--ease),border-color .4s var(--ease),transform .4s var(--ease)}
 .tab:hover{transform:translateY(-2px);border-color:var(--persimmon);color:#a74731}
 .tab.active{border-color:var(--plum);background:var(--plum);color:var(--alabaster)}
-.panel{min-height:180px}
+.panel{min-height:180px;min-width:0;overflow:visible}
 .panel.is-changing{animation:menu-enter .58s var(--ease) both}
-.cat{margin:0 0 42px}
+.cat{min-width:0;margin:0 0 42px}
 .cat h3{margin:0 0 19px;padding-left:16px;border-left:2px solid var(--persimmon);color:var(--plum);font:600 1.85rem/1 var(--serif)}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
-.card{display:flex;min-height:158px;flex-direction:column;justify-content:space-between;gap:20px;padding:clamp(20px,2vw,27px);border:1px solid rgba(255,255,255,.1);background:linear-gradient(145deg,#49364a,#2d202f);color:var(--alabaster);box-shadow:0 12px 30px rgba(48,32,51,.09);transition:transform .65s var(--ease),box-shadow .65s var(--ease),border-color .45s var(--ease)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;min-width:0;align-items:stretch}
+.card{display:flex;height:auto;min-height:158px;min-width:0;overflow:visible;flex-direction:column;justify-content:flex-start;gap:20px;padding:clamp(20px,2vw,27px);border:1px solid rgba(255,255,255,.1);background:linear-gradient(145deg,#49364a,#2d202f);color:var(--alabaster);box-shadow:0 12px 30px rgba(48,32,51,.09);transition:transform .65s var(--ease),box-shadow .65s var(--ease),border-color .45s var(--ease)}
 .card:hover{transform:translateY(-6px);border-color:rgba(241,138,99,.7);box-shadow:var(--shadow-deep)}
-.card h4{margin:0;color:var(--alabaster);font:600 clamp(1.45rem,2vw,1.8rem)/1.05 var(--serif)}
-.card .desc{margin:9px 0 0;color:rgba(251,247,240,.75);font-size:.78rem;line-height:1.6}
+.card h4{margin:0;color:var(--alabaster);font:600 clamp(1.45rem,2vw,1.8rem)/1.05 var(--serif);overflow-wrap:anywhere}
+.card .desc{margin:9px 0 0;color:rgba(251,247,240,.75);font-size:.78rem;line-height:1.6;overflow-wrap:anywhere}
 .price,.opts b{color:#ff9875;font-size:1.02rem;font-weight:800;font-variant-numeric:tabular-nums}
 .opts{display:grid;gap:8px;margin:0;padding:0;list-style:none}
-.opts li{display:flex;justify-content:space-between;gap:12px;padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,.14);color:rgba(251,247,240,.8);font-size:.78rem}
-.opts b{white-space:nowrap}
+.opts li{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;min-width:0;padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,.14);color:rgba(251,247,240,.8);font-size:.78rem}
+.opts li span{min-width:0;overflow-wrap:anywhere}.opts b{flex:0 0 auto;white-space:nowrap}
 .card.combo{border-color:rgba(217,183,126,.4);background:linear-gradient(145deg,#654638,#352731)}
 .note{margin:22px 0 0;color:#786a62;font-size:.75rem}
 @keyframes menu-enter{from{opacity:0;transform:translateY(16px);filter:blur(2px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
@@ -208,9 +208,10 @@ footer p{margin:0;font-size:.72rem}
  .contact-grid{gap:10px}
  .contact-card{min-height:155px;padding:18px}
  footer .container{align-items:flex-start;flex-direction:column}
+ #menu>.container{padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
  .fab{display:inline-flex}
 }
-@media(max-width:390px){.hero-text h1{font-size:3.7rem}.hero-actions{align-items:stretch;flex-direction:column}.hero-actions .btn{width:100%}.grid,.contact-grid{grid-template-columns:1fr}.food-shot,.food-shot-feature,.food-shot-wide{grid-column:span 6}}
+@media(max-width:540px){.hero-text h1{font-size:clamp(3.4rem,15vw,3.7rem)}.hero-actions{align-items:stretch;flex-direction:column}.hero-actions .btn{width:100%}.grid,.contact-grid{grid-template-columns:1fr}.food-shot,.food-shot-feature,.food-shot-wide{grid-column:span 6}}
 
 /* Short landscape viewports: keep the first screen usable without clipping. */
 @media(max-height:520px) and (orientation:landscape){
