@@ -242,3 +242,41 @@ h2 em,h1 em{color:var(--orange);font-style:normal}
  html{scroll-behavior:auto}
  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+/* Premium motion — restrained, smooth and touch-friendly */
+@keyframes fryco-rise-in{
+  from{opacity:0;transform:translate3d(0,22px,0)}
+  to{opacity:1;transform:translate3d(0,0,0)}
+}
+@keyframes fryco-image-in{
+  from{opacity:0;transform:translate3d(0,18px,0) scale(.985)}
+  to{opacity:1;transform:translate3d(0,0,0) scale(1)}
+}
+.hero-copy{animation:fryco-rise-in .8s var(--ease) both}
+.hero-visual{animation:fryco-image-in 1s .12s var(--ease) both}
+.hero-sticker{animation:sticker-arrive .75s .65s var(--ease) both}
+@keyframes sticker-arrive{
+  from{opacity:0;transform:rotate(0) scale(.82)}
+  to{opacity:1;transform:rotate(10deg) scale(1)}
+}
+.site-header{transition:box-shadow .3s ease,background-color .3s ease}
+.site-header.is-scrolled{box-shadow:0 8px 24px rgba(45,23,15,.075)}
+.btn,.header-order,.fab,.tab,.menu-toggle{transition:transform .25s var(--ease),background-color .25s ease,box-shadow .25s ease,border-color .25s ease}
+.btn:active,.header-order:active,.fab:active,.tab:active{transform:scale(.975)}
+.btn-dark:hover,.fab:hover{box-shadow:0 12px 28px rgba(45,23,15,.22)}
+.photo{isolation:isolate}
+.photo img{will-change:transform}
+.story-image img,.inside-layout figure img{transition:transform .7s var(--ease),filter .5s ease}
+.story-image:hover img,.inside-layout figure:hover img{transform:scale(1.018);filter:saturate(1.04)}
+.motion-reveal{opacity:0;transform:translate3d(0,22px,0);transition:opacity .72s var(--ease),transform .72s var(--ease);transition-delay:var(--motion-delay,0ms)}
+.motion-reveal.is-visible{opacity:1;transform:translate3d(0,0,0)}
+@media(hover:none){
+  .photo:hover img{transform:none;filter:none}
+  .card:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-copy,.hero-visual,.hero-sticker{animation:none!important}
+  .motion-reveal{opacity:1!important;transform:none!important;transition:none!important}
+  .photo img,.story-image img,.inside-layout figure img{will-change:auto;transition:none!important}
+}
+
