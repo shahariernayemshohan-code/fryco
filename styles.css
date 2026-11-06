@@ -43,14 +43,15 @@ h3{font:600 clamp(1.6rem,2.6vw,2.15rem)/1.05 var(--serif)}
 .lead{max-width:58ch;margin-bottom:34px;color:var(--muted);font-size:clamp(.95rem,1.2vw,1.08rem);line-height:1.85}
 .eyebrow,.section-kicker,.about-kicker,.hero-kicker{display:inline-block;margin-bottom:20px;font-size:.66rem;font-weight:700;letter-spacing:.2em;line-height:1.5;text-transform:uppercase}
 .eyebrow,.section-kicker{color:#a94d36}
-.skip-link{position:fixed;z-index:100;top:10px;left:10px;padding:10px 16px;background:var(--alabaster);color:var(--plum);transform:translateY(-160%);transition:transform .3s var(--ease)}
-.skip-link:focus{transform:translateY(0)}
+.skip-link{position:fixed;z-index:100;top:10px;left:10px;padding:10px 16px;background:var(--alabaster);color:var(--plum);transform:translateY(-200%);transition:transform .3s var(--ease)}
+.skip-link:focus:not(:focus-visible){transform:translateY(-200%)}
+.skip-link:focus-visible{transform:translateY(0)}
 /* Navigation */
 .nav{position:sticky;z-index:30;top:0;height:var(--nav-height);border-bottom:1px solid rgba(40,29,43,.1);background:rgba(242,233,221,.94);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:background .45s var(--ease),box-shadow .45s var(--ease)}
 .nav.is-scrolled{background:rgba(251,247,240,.97);box-shadow:0 8px 28px rgba(40,29,43,.08)}
 .nav .container{display:flex;height:100%;align-items:center;justify-content:space-between}
 .brand{display:inline-flex;align-items:center;gap:10px;color:var(--plum);font-size:1.05rem;font-weight:800;letter-spacing:.2em}
-.brand img{width:46px;height:46px;object-fit:contain}
+.brand img{width:58px;height:58px;object-fit:contain}
 .nav nav ul{display:flex;align-items:center;gap:clamp(20px,3vw,42px);margin:0;padding:0;list-style:none}
 .nav nav a{position:relative;display:inline-block;padding:9px 0;color:#51464c;font-size:.73rem;font-weight:700;letter-spacing:.06em;transition:color .35s var(--ease)}
 .nav nav a::after{position:absolute;right:0;bottom:3px;left:0;height:1px;background:var(--persimmon);content:"";transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
