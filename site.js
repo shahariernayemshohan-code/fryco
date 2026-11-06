@@ -4,11 +4,12 @@
 
   const menuButton = document.querySelector(".menu-toggle");
   const navigation = document.getElementById("navlinks");
-  const header = document.querySelector(".nav");
+  const header = document.querySelector(".site-header");
 
   function closeNavigation() {
     if (!menuButton || !navigation) return;
     navigation.classList.remove("open");
+    navigation.parentElement.classList.remove("open");
     menuButton.setAttribute("aria-expanded", "false");
   }
 
@@ -17,6 +18,7 @@
       const open = menuButton.getAttribute("aria-expanded") !== "true";
       menuButton.setAttribute("aria-expanded", String(open));
       navigation.classList.toggle("open", open);
+      navigation.parentElement.classList.toggle("open", open);
     });
 
     navigation.querySelectorAll("a").forEach(link => {
