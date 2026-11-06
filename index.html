@@ -435,6 +435,34 @@ footer{background:#160d1d;border-top:1px solid rgba(217,168,79,.4);padding:36px 
 .hero:after{display:none}
 @media(max-width:900px){.hero{min-height:560px}.hero .container{width:calc(100% - 42px)}.hero-text{padding:90px 20px}}
 @media(max-width:680px){.hero{min-height:0}.hero .container{width:100%}.hero-text{padding:88px 24px 82px;text-align:center}.hero-text h1{font-size:clamp(3.5rem,14vw,5.3rem)}.hero-text p{margin:22px auto 27px}.hero-actions{justify-content:center}}
+
+/* Softer, more welcoming opening */
+.hero{min-height:560px;background:radial-gradient(ellipse at 50% 0%,#fffdf9 0%,#f7f1e8 72%);color:var(--ink);border-bottom:1px solid rgba(32,19,33,.07)}
+.hero .container{width:min(100% - 64px,1240px);max-width:1240px;min-height:0;display:block;padding:0}
+.hero-text{max-width:780px;margin:0 auto;padding:105px 24px 112px;text-align:center}
+.hero-kicker{color:#9a7136;font-size:.65rem;letter-spacing:.2em;margin-bottom:25px}
+.hero-text h1{font:500 clamp(3.4rem,7.8vw,6.3rem)/1.02 var(--serif);letter-spacing:-.055em;color:var(--ink)}
+.hero-text h1 em{color:#a77a42;font-style:italic}
+.hero-text p{max-width:470px;margin:25px auto 32px;color:#786d75;font-size:.98rem;line-height:1.9}
+.hero-actions{justify-content:center;gap:12px}
+.hero .btn{min-height:48px;padding:13px 22px;border-radius:2px;font-size:.69rem;letter-spacing:.1em}
+.hero .btn-primary{background:var(--ink);color:#fff}
+.hero .btn-outline{border-color:rgba(32,19,33,.25);color:var(--ink)}
+.hero .btn-outline:hover{background:var(--ink);color:#fff}
+@media(max-width:680px){.hero{min-height:0}.hero .container{width:100%}.hero-text{padding:82px 24px 86px}.hero-text h1{font-size:clamp(3.35rem,13.5vw,5rem)}.hero-text p{font-size:.9rem;margin:21px auto 27px}.hero-actions{display:flex;justify-content:center;gap:10px}.hero .btn{padding:12px 15px;font-size:.62rem}}
+/* Warm, human About section */
+.about{background:#eee5d9;color:var(--ink);padding:clamp(76px,10vw,138px) 0}
+.about:before{width:460px;height:460px;right:-180px;top:-180px;border-color:rgba(154,113,54,.15);box-shadow:0 0 0 45px rgba(154,113,54,.025),0 0 0 90px rgba(154,113,54,.018)}
+.about .wrap{grid-template-columns:1.2fr .8fr;gap:clamp(42px,8vw,110px)}
+.about-kicker{display:inline-block;margin-bottom:22px;color:#98703e;font-size:.65rem;font-weight:700;letter-spacing:.2em}
+.about h2{max-width:15ch;color:var(--ink);font:500 clamp(2.7rem,5.2vw,4.6rem)/1.04 var(--serif);letter-spacing:-.045em}
+.about p:not(.tagline){max-width:58ch;margin-top:20px;color:#665b63;font-size:.91rem;line-height:2}
+.about .btn{margin-top:26px;border-radius:2px;background:var(--ink);color:#fff;box-shadow:none;font-size:.68rem;letter-spacing:.09em}
+.about .btn:hover{background:#3a2940}
+.about-mark{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;min-height:340px}
+.about .mascot{width:min(270px,76%);padding:8px;background:#f8f2e9;border:1px solid rgba(154,113,54,.28);filter:drop-shadow(0 18px 24px rgba(32,19,33,.09));box-shadow:0 20px 55px rgba(32,19,33,.08)}
+.about-mark span{color:#8a704f;font:italic 500 1.15rem var(--serif);text-align:center}
+@media(max-width:680px){.about{padding:76px 0}.about .wrap{grid-template-columns:1fr;gap:38px}.about h2{font-size:clamp(2.65rem,10.5vw,3.8rem)}.about p:not(.tagline){font-size:.88rem;line-height:1.9}.about-mark{min-height:0;gap:16px}.about .mascot{width:min(190px,58%)}}
 </style>
 </head>
 <body>
@@ -456,8 +484,8 @@ footer{background:#160d1d;border-top:1px solid rgba(217,168,79,.4);padding:36px 
     <div class="container">
       <div class="hero-text">
         <span class="hero-kicker">TAKE A TRIP, TAKE A BITE TO FRYCO!</span>
-        <h1>Made for<br><em>the craving.</em></h1>
-        <p>Golden, crispy favourites, signature burgers and feel-good sips. Find your next favourite at Fryco.</p>
+        <h1>A little joy<br><em>in every bite.</em></h1>
+        <p>Good food has a way of making an ordinary day feel special. Find a favourite, take a moment, and enjoy Fryco.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#menu">Explore the menu <span aria-hidden="true">↗</span></a>
           <a class="btn btn-outline" href="tel:+8801332568578">Call Fryco</a>
@@ -502,13 +530,18 @@ footer{background:#160d1d;border-top:1px solid rgba(217,168,79,.4);padding:36px 
 
   <section id="about" class="about">
     <div class="container wrap fade">
-      <div>
-        <h2>Big flavour. Fresh cravings. All in one place.</h2>
-        <p>At Fryco, there’s more than one way to find your favourite. Enjoy golden crispy chicken, flavour-packed wings, juicy burgers and satisfying rice bowls, made for the moments when only something delicious will do.</p>
-        <p>Complete your meal with crispy fries, delicious sides and flavourful dips, or enjoy freshly brewed coffee, chilled drinks, shakes and smoothies. Visit us in Satkhira, bring your appetite and discover your next Fryco favourite.</p>
-        <a class="btn btn-accent" href="#menu">Explore the menu</a>
+      <div class="about-copy">
+        <span class="about-kicker">A LITTLE ABOUT FRYCO</span>
+        <h2>Good food. Good company. Little moments worth remembering.</h2>
+        <p>Some moments deserve more than an ordinary bite. A catch-up with friends, a pause in a busy day, a small treat just for yourself — food has a lovely way of making those moments feel special.</p>
+        <p>That’s the feeling we hope to share at Fryco. From crispy chicken and flavourful burgers to comforting sides, coffee, shakes and sweet treats, there’s always something to make the moment a little brighter.</p>
+        <p>Here in Satkhira, we’d love to be part of your everyday favourites. Come as you are, bring someone along, and make yourself at home.</p>
+        <a class="btn btn-accent" href="#menu">Find your Fryco favourite</a>
       </div>
-      <img class="mascot" src="fryco-logo.jpg" alt="Fryco mascot chicken">
+      <div class="about-mark">
+        <img class="mascot" src="fryco-logo.jpg" alt="Fryco mascot chicken">
+        <span>Made for the moments we share.</span>
+      </div>
     </div>
   </section>
 
