@@ -63,6 +63,14 @@
     elements.forEach(element => observer.observe(element));
   }
 
+  function refineNavigationOnScroll() {
+    const header = document.querySelector(".nav");
+    if (!header) return;
+    const update = () => header.classList.toggle("is-scrolled", window.scrollY > 18);
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+  }
+
   function updateFooterYear() {
     const yearElement = document.getElementById("year");
     if (yearElement) {
@@ -71,5 +79,6 @@
   }
 
   revealPageSections();
+  refineNavigationOnScroll();
   updateFooterYear();
 })();
