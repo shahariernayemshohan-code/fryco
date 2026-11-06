@@ -654,6 +654,7 @@ h2{color:#d9431f}
 .about .mascot{filter:drop-shadow(0 22px 32px rgba(67,25,16,.28))}
 .about .btn-accent{background:#ffc928;color:#382318}
 .about-mark span{color:#fff1d6}
+.location-title{color:var(--purple)}
 /* Interior, location and contact keep a natural warm-neutral balance */
 .inside-fryco{background:#fff1e4}
 .inside-fryco h2{color:#4b2454}
