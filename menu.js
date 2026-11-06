@@ -34,18 +34,37 @@
     return `<div class="price">${formatPrice(price)}</div>`;
   }
 
+  const menuImages = {
+    "Chicken Fry": ["fried-chicken.jpg", "Chicken fry"],
+    "Chicken Wings": ["chicken-wings.jpg", "Chicken wings"],
+    "Chicken Strips": ["chicken-strips.jpg", "Chicken strips"],
+    "Fryco Supreme": ["chicken-burger-detail.jpg", "Fryco Supreme chicken burger"],
+    "Chicken Crispy Burger": ["chicken-burger-detail.jpg", "Crispy chicken burger"],
+    "French Fries": ["french-fries.jpg", "French fries"],
+    "Nuggets": ["fryco-nuggets.jpg", "Chicken nuggets"],
+    "Brownie": ["fryco-brownie.jpg", "Fryco brownie"],
+    "Chocolate": ["chocolate-milkshake.jpg", "Chocolate milkshake"]
+  };
+
   function createMenuCard(item, isCombo) {
     const description = item.description
       ? `<p class="desc">${escapeHtml(item.description)}</p>`
       : "";
+    const image = menuImages[item.name];
+    const imageMarkup = image
+      ? `<img class="card-image" src="${image[0]}" alt="${escapeHtml(image[1])}" loading="lazy" decoding="async">`
+      : "";
 
     return `
-      <article class="card${isCombo ? " combo" : ""}">
-        <div>
-          <h4>${escapeHtml(item.name)}</h4>
-          ${description}
+      <article class="card${isCombo ? " combo" : ""}${image ? " has-photo" : ""}">
+        ${imageMarkup}
+        <div class="card-content">
+          <div class="card-copy">
+            <h4>${escapeHtml(item.name)}</h4>
+            ${description}
+          </div>
+          ${createPriceMarkup(item.price)}
         </div>
-        ${createPriceMarkup(item.price)}
       </article>
     `;
   }
