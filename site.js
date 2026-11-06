@@ -50,23 +50,27 @@
   }
 
   function revealContent() {
-    const targets = document.querySelectorAll(".fade");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const targets = document.querySelectorAll(
+      ".section-heading, .story-image, .story-copy, .inside-layout > div, .inside-layout figure, " +
+      ".photo, .visit-card, .social-links a, .card, .cat > h3"
+    );
 
-    if (reducedMotion || !("IntersectionObserver" in window)) {
-      targets.forEach(target => target.classList.add("show"));
-      return;
-    }
+    if (reducedMotion || !("IntersectionObserver" in window)) return;
 
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add("show");
+        entry.target.classList.add("is-visible");
         observer.unobserve(entry.target);
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -36px 0px" });
+    }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
 
-    targets.forEach(target => observer.observe(target));
+    targets.forEach((target, index) => {
+      target.classList.add("motion-reveal");
+      target.style.setProperty("--motion-delay", `${Math.min(index % 5, 4) * 65}ms`);
+      observer.observe(target);
+    });
   }
 
   const year = document.getElementById("year");
