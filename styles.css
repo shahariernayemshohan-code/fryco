@@ -3,10 +3,6 @@
    Keep each component's styles together and preserve the media-query order.
 */
 
-/* FRYCO website styles
-   Brand palette and responsive layout live here.
-   Keep component styles grouped by page section.
-*/
 :root {
   --purple: #4B2A5E;
   --purple-dark: #361d45;
@@ -971,8 +967,6 @@ footer {
 
 /* ---- Premium motion polish ---- */
 @media (prefers-reduced-motion:no-preference) {
-  .hero-img { animation: heroImageIn .95s cubic-bezier(.2,.75,.25,1) both;
-  }
   .hero-text h1 { animation: softRise .8s .12s both;
   }
   .hero-text p { animation: softRise .8s .24s both;
