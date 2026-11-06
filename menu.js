@@ -65,7 +65,6 @@
       role="tabpanel"
       aria-live="polite"
     ></div>
-    <p class="note">All prices include VAT.</p>
   `;
 
   const tabs = menuRoot.querySelector(".tabs");
