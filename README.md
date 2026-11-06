@@ -1,38 +1,58 @@
 # FRYCO Website
 
-A lightweight, static website for FRYCO. It is published with GitHub Pages.
+FRYCO's website is a lightweight static site hosted with GitHub Pages.
 
-## Project structure
+## Project files
 
-- `index.html` — page content, SEO metadata and structured restaurant information.
-- `styles.css` — all visual styles, responsive rules and brand colours.
-- `menu-data.js` — menu catalogue (names, descriptions and prices).
-- `menu.js` — menu rendering and accessible category-tab behavior.
-- `site.js` — mobile navigation, scroll-reveal behavior and footer year.
-- Image files — restaurant, food and brand photography used by the page and social metadata.
+| File | Purpose |
+| --- | --- |
+| `index.html` | Page content, contact details, SEO metadata and restaurant information |
+| `styles.css` | Brand colours, layout, component styles and responsive rules |
+| `menu-data.js` | Menu categories, item descriptions and prices |
+| `menu.js` | Menu rendering and keyboard-accessible category tabs |
+| `site.js` | Mobile navigation, scroll reveals and footer year |
+| Image files | Logo, food photography and restaurant photos |
 
-## Making common changes
+## Common updates
 
-### Update menu items or prices
-Edit `menu-data.js`. Prices are numeric values in Bangladeshi taka. For size or variant pricing, use an array of label/price pairs, following the existing entries.
+### Change a menu item or price
 
-### Change the design
-Edit `styles.css`. The primary brand palette is defined near the top in `:root`. Keep responsive adjustments in the relevant component sections and media queries.
+Edit `menu-data.js`. Each item uses:
 
-### Change page content or contact information
-Edit `index.html`. Update the visible content and the matching SEO / Restaurant structured-data fields when business details change.
+```js
+createMenuItem("Item name", "Short description", 250)
+```
+
+For different sizes or options, provide an array of label and price pairs:
+
+```js
+createMenuItem("Fries", "", [
+  ["Regular", 110],
+  ["Large", 130]
+])
+```
+
+### Change the website's appearance
+
+Edit `styles.css`. The main brand colour variables are defined in the first `:root` block. Keep styles grouped by the page component they affect.
+
+### Change page copy or business information
+
+Edit `index.html`. When changing the address, phone number or opening hours, also update the Restaurant structured data in the document head.
 
 ### Change interactions
-Edit `menu.js` for menu behavior and `site.js` for navigation, reveal effects or footer behavior.
 
-## Development notes
+- Edit `menu.js` for menu tabs and menu cards.
+- Edit `site.js` for mobile navigation and scroll effects.
 
-- No build step or package installation is required; this is a plain HTML, CSS and JavaScript site.
-- Keep file paths relative so the site works from the GitHub Pages project subpath.
-- Do not rename or remove image assets until every HTML, CSS, JavaScript and metadata reference has been checked.
-- Test the page at desktop and mobile widths after changes. Check menu tabs, mobile navigation, contact links, map and image loading.
-- Keep business facts and menu prices verified with FRYCO before publishing.
+## Technical notes
+
+- This is a static HTML, CSS and JavaScript project. It has no build step or package dependencies.
+- Keep asset and script paths relative so the site works under the GitHub Pages project URL.
+- Do not delete or rename images until their references in HTML, CSS and metadata have been checked.
+- Test desktop and mobile layouts after changes. Check menu tabs, mobile navigation, links, map and image loading.
+- Confirm menu prices and business details with FRYCO before publishing.
 
 ## Publishing
 
-The site is served from the repository's GitHub Pages configuration. Changes pushed to the published branch are deployed by GitHub Pages.
+The repository's GitHub Pages configuration publishes the site. Commits to the configured publishing branch are deployed by GitHub Pages.
