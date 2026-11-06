@@ -135,7 +135,7 @@ h3{font:600 clamp(1.6rem,2.6vw,2.15rem)/1.05 var(--serif)}
 .about p{max-width:61ch;color:rgba(255,248,239,.88);font-size:.94rem;line-height:1.95}
 .about .btn{margin-top:12px}
 .about-mark{position:relative;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
-.about-mark::before{position:absolute;width:min(28vw,340px);aspect-ratio:1;border:1px solid rgba(217,183,126,.38);border-radius:50%;content:""}
+.about-mark::before{position:absolute;width:min(28vw,340px);aspect-ratio:1;border:1px solid rgba(217,183,126,.38);border-radius:28px;content:""}
 .about-mark .mascot{position:relative;z-index:1;width:min(100%,300px);filter:drop-shadow(0 22px 28px rgba(12,8,13,.28))}
 .about-mark span{position:relative;z-index:1;color:#f0c995;font:italic 500 1.45rem var(--serif)}
 /* Interior */
