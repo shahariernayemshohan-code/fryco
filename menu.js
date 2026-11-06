@@ -1,63 +1,134 @@
-/* FRYCO menu rendering and accessible category tabs. */
+/* FRYCO menu
+   Builds the menu from the catalogue in menu-data.js.
+*/
 (() => {
   "use strict";
 
-  const MENU = window.FRYCO_MENU || [];
-  const fmt = n => "৳" + n.toLocaleString("en-US");
+  const categories = window.FRYCO_MENU || [];
+  const menuRoot = document.getElementById("menu-root");
 
-  const card = (item, isCombo) => {
-    const priceMarkup = Array.isArray(item.p)
-      ? `<ul class="opts">${item.p.map(option =>
-          `<li><span>${option[0]}</span><b>${fmt(option[1])}</b></li>`
-        ).join("")}</ul>`
-      : `<div class="price">${fmt(item.p)}</div>`;
+  if (!menuRoot || categories.length === 0) return;
 
-    return `<div class="card${isCombo ? " combo" : ""}">
-      <div>
-        <h4>${item.n}</h4>
-        ${item.d ? `<p class="desc">${item.d}</p>` : ""}
-      </div>
-      ${priceMarkup}
-    </div>`;
-  };
+  const formatPrice = amount => `৳${amount.toLocaleString("en-US")}`;
 
-  const root = document.getElementById("menu-root");
-  if (!root || !MENU.length) return;
+  const escapeHtml = value => String(value).replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[character]);
 
-  root.innerHTML = `
+  function createPriceMarkup(price) {
+    if (Array.isArray(price)) {
+      const options = price.map(([label, amount]) => `
+        <li>
+          <span>${escapeHtml(label)}</span>
+          <b>${formatPrice(amount)}</b>
+        </li>
+      `).join("");
+
+      return `<ul class="opts">${options}</ul>`;
+    }
+
+    return `<div class="price">${formatPrice(price)}</div>`;
+  }
+
+  function createMenuCard(item, isCombo) {
+    const description = item.description
+      ? `<p class="desc">${escapeHtml(item.description)}</p>`
+      : "";
+
+    return `
+      <article class="card${isCombo ? " combo" : ""}">
+        <div>
+          <h4>${escapeHtml(item.name)}</h4>
+          ${description}
+        </div>
+        ${createPriceMarkup(item.price)}
+      </article>
+    `;
+  }
+
+  menuRoot.innerHTML = `
     <div class="tabs" role="tablist" aria-label="Menu categories"></div>
-    <div class="panel" id="menu-panel" role="tabpanel" aria-live="polite"></div>
+    <div
+      class="panel"
+      id="menu-panel"
+      role="tabpanel"
+      aria-live="polite"
+    ></div>
     <p class="note">All prices include VAT.</p>
   `;
 
-  const tabs = root.querySelector(".tabs");
-  const panel = root.querySelector(".panel");
+  const tabs = menuRoot.querySelector(".tabs");
+  const panel = menuRoot.querySelector(".panel");
 
-  function showCategory(index) {
-    const category = MENU[index];
+  function showCategory(selectedIndex) {
+    const category = categories[selectedIndex];
     if (!category) return;
 
-    tabs.querySelectorAll(".tab").forEach((tab, tabIndex) => {
-      const selected = tabIndex === index;
-      tab.classList.toggle("active", selected);
-      tab.setAttribute("aria-selected", String(selected));
-      tab.tabIndex = selected ? 0 : -1;
+    const categoryTabs = tabs.querySelectorAll(".tab");
+
+    categoryTabs.forEach((tab, index) => {
+      const isSelected = index === selectedIndex;
+
+      tab.classList.toggle("active", isSelected);
+      tab.setAttribute("aria-selected", String(isSelected));
+      tab.tabIndex = isSelected ? 0 : -1;
     });
 
-    panel.innerHTML = category.groups.map(group => `
-      <div class="cat">
-        ${group.title ? `<h3>${group.title}</h3>` : ""}
-        <div class="grid">${group.items.map(item => card(item, category.combo)).join("")}</div>
-      </div>
-    `).join("");
+    panel.setAttribute("aria-labelledby", `menu-tab-${selectedIndex}`);
+    panel.innerHTML = category.groups.map(group => {
+      const heading = group.title
+        ? `<h3>${escapeHtml(group.title)}</h3>`
+        : "";
+
+      const cards = group.items
+        .map(item => createMenuCard(item, category.combo))
+        .join("");
+
+      return `
+        <section class="cat">
+          ${heading}
+          <div class="grid">${cards}</div>
+        </section>
+      `;
+    }).join("");
   }
 
-  MENU.forEach((category, index) => {
+  function handleTabKeydown(event, currentIndex) {
+    let nextIndex = currentIndex;
+
+    switch (event.key) {
+      case "ArrowRight":
+        nextIndex = (currentIndex + 1) % categories.length;
+        break;
+      case "ArrowLeft":
+        nextIndex = (currentIndex - 1 + categories.length) % categories.length;
+        break;
+      case "Home":
+        nextIndex = 0;
+        break;
+      case "End":
+        nextIndex = categories.length - 1;
+        break;
+      default:
+        return;
+    }
+
+    event.preventDefault();
+    tabs.querySelectorAll(".tab")[nextIndex].focus();
+    showCategory(nextIndex);
+  }
+
+  categories.forEach((category, index) => {
     const tab = document.createElement("button");
+
     tab.className = "tab";
     tab.type = "button";
-    tab.role = "tab";
     tab.id = `menu-tab-${index}`;
+    tab.setAttribute("role", "tab");
     tab.setAttribute("aria-controls", "menu-panel");
     tab.setAttribute("aria-selected", String(index === 0));
     tab.tabIndex = index === 0 ? 0 : -1;
@@ -65,16 +136,7 @@
 
     tab.addEventListener("click", () => showCategory(index));
     tab.addEventListener("keydown", event => {
-      let nextIndex = index;
-      if (event.key === "ArrowRight") nextIndex = (index + 1) % MENU.length;
-      else if (event.key === "ArrowLeft") nextIndex = (index - 1 + MENU.length) % MENU.length;
-      else if (event.key === "Home") nextIndex = 0;
-      else if (event.key === "End") nextIndex = MENU.length - 1;
-      else return;
-
-      event.preventDefault();
-      tabs.querySelectorAll(".tab")[nextIndex].focus();
-      showCategory(nextIndex);
+      handleTabKeydown(event, index);
     });
 
     tabs.appendChild(tab);
