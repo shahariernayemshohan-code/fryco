@@ -128,16 +128,12 @@ h3{font:600 clamp(1.6rem,2.6vw,2.15rem)/1.05 var(--serif)}
 @keyframes menu-enter{from{opacity:0;transform:translateY(16px);filter:blur(2px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
 /* Brand story */
 .about{overflow:hidden;background:radial-gradient(ellipse at 88% 16%,rgba(217,183,126,.14),transparent 27%),radial-gradient(ellipse at 5% 90%,rgba(233,103,67,.13),transparent 31%),linear-gradient(128deg,#211824,#302033 56%,#432a40);color:var(--alabaster)}
-.about .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(220px,.75fr);gap:clamp(42px,9vw,132px);align-items:center}
+.about .wrap{display:grid;grid-template-columns:minmax(0,1fr);align-items:center}
 .about-copy{max-width:700px}
 .about-kicker{color:#f0c995}
 .about h2{max-width:14ch;margin-bottom:28px;color:#fff8ef;font-size:clamp(2.9rem,5.6vw,5.5rem)}
 .about p{max-width:61ch;color:rgba(255,248,239,.88);font-size:.94rem;line-height:1.95}
 .about .btn{margin-top:12px}
-.about-mark{position:relative;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
-.about-mark::before{position:absolute;width:min(28vw,340px);aspect-ratio:1;border:1px solid rgba(217,183,126,.38);border-radius:28px;content:""}
-.about-mark .mascot{position:relative;z-index:1;width:min(100%,300px);filter:drop-shadow(0 22px 28px rgba(12,8,13,.28))}
-.about-mark span{position:relative;z-index:1;color:#f0c995;font:italic 500 1.45rem var(--serif)}
 /* Interior */
 .inside-fryco{background:var(--cream)}
 .inside-fryco>.container>.fade{max-width:620px}
@@ -206,9 +202,6 @@ footer p{margin:0;font-size:.72rem}
  .food-shot img{aspect-ratio:4/4.7}
  .food-shot figcaption strong{font-size:1.18rem}
  .about .wrap{grid-template-columns:1fr}
- .about-mark{flex-direction:row;justify-content:flex-start;text-align:left}
- .about-mark .mascot{width:112px}
- .about-mark::before{left:-5px;width:125px}
  .inside-photo img{aspect-ratio:4/3}
  .loc-grid{grid-template-columns:1fr}
  .map,.map iframe{min-height:330px}
