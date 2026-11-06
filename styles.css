@@ -1,10 +1,10 @@
 /* FRYCO — bold, warm, appetite-first visual identity */
 :root{
   color-scheme:light;
-  --orange:#f06b32;--orange-deep:#d94f22;--orange-soft:#ff9b62;
-  --brown:#482719;--brown-deep:#2d170f;--brown-mid:#70412b;
-  --cream:#fff3df;--paper:#fffaf1;--sand:#f1dfc7;--gold:#f4bd62;
-  --ink:#321d14;--muted:#806b5d;--line:rgba(72,39,25,.15);
+  --orange:#e9652b;--orange-deep:#b83f19;--orange-soft:#f58a52;
+  --brown:#4a281b;--brown-deep:#26140e;--brown-mid:#68412e;
+  --cream:#fff1dc;--paper:#fffaf2;--sand:#ead5bc;--gold:#eab65d;
+  --ink:#321b12;--muted:#765f51;--line:rgba(74,40,27,.16);
   --sans:"DM Sans",Arial,sans-serif;--display:"Playfair Display",Georgia,serif;
   --content:1200px;--nav-height:78px;--ease:cubic-bezier(.2,.75,.25,1);
 }
@@ -280,102 +280,7 @@ h2 em,h1 em{color:var(--orange);font-style:normal}
   .photo img,.story-image img,.inside-layout figure img{will-change:auto;transition:none!important}
 }
 
-/* FRYCO signature palette refresh — warm citrus, toasted caramel and espresso */
-:root{
-  --orange:#e9652b;
-  --orange-deep:#b83f19;
-  --orange-soft:#f58a52;
-  --brown:#4a281b;
-  --brown-deep:#26140e;
-  --brown-mid:#68412e;
-  --cream:#fff1dc;
-  --paper:#fffaf2;
-  --sand:#ead5bc;
-  --gold:#eab65d;
-  --ink:#321b12;
-  --muted:#765f51;
-  --line:rgba(74,40,27,.16);
-}
-
-/* Keep text contrast intentional on every signature-colour surface */
-body{background:var(--paper);color:var(--ink)}
-.site-header{background:rgba(255,250,242,.97);border-bottom-color:rgba(74,40,27,.13)}
-.site-header nav a{color:var(--brown)}
-.header-order{background:var(--orange);color:var(--brown-deep)}
-.header-order:hover{background:var(--orange-soft)}
-.menu-toggle{background:var(--brown-deep)}
-.menu-toggle span{background:var(--cream)}
-.hero{background:var(--orange);color:var(--brown-deep)}
-.hero-pattern{background-image:radial-gradient(var(--brown-deep) 1px,transparent 1px);opacity:.11}
-.hero .eyebrow{color:var(--brown-deep)}
-.hero .eyebrow i{background:var(--brown-deep)}
-.hero h1{color:var(--brown-deep)}
-.hero h1 em{display:inline-block;padding:.035em .13em .09em;border-radius:.12em;background:var(--brown-deep);color:var(--cream)}
-.hero-copy>p{color:var(--brown-deep)}
-.hero-call{color:var(--brown-deep);border-color:var(--brown-deep)}
-.hero-note{color:var(--brown-deep)}
-.hero-photo-frame{border-color:var(--cream);background:var(--sand);box-shadow:18px 22px 0 rgba(38,20,14,.2)}
-.hero-sticker{background:var(--brown-deep);color:var(--cream);border-color:var(--cream)}
-.hero-sticker strong{color:var(--gold)}
-.hero-caption{background:var(--cream);color:var(--brown-deep)}
-.hero-bottom{border-top-color:rgba(38,20,14,.3);color:var(--brown-deep)}
-.ticker{background:var(--brown-deep);color:var(--cream)}
-.ticker-track b{color:var(--orange-soft)}
-.menu-section{background:var(--cream)}
-.tabs{background:linear-gradient(180deg,var(--cream) 82%,rgba(255,241,220,0))}
-.tab{border-color:rgba(74,40,27,.22);background:rgba(255,250,242,.8);color:var(--brown)}
-.tab:hover,.tab.active{border-color:var(--brown-deep);background:var(--brown-deep);color:var(--cream)}
-.menu-search{border-color:rgba(74,40,27,.22);background:var(--paper);color:var(--brown-deep)}
-.menu-search:focus{border-color:var(--orange-deep);box-shadow:0 0 0 3px rgba(233,101,43,.15)}
-.card{background:var(--paper);border-color:rgba(74,40,27,.13)}
-.card:hover{border-color:rgba(184,63,25,.55);box-shadow:0 10px 24px rgba(38,20,14,.09)}
-.card h4,.cat h3,.search-category-title{color:var(--brown-deep)}
-.price{background:#f9dfc9;color:#963613}
-.opts b{color:#963613}
-.card.combo{background:#ffead6;border-color:rgba(184,63,25,.28)}
-.gallery-section{background:var(--paper)}
-.photo,.photo-grid figure{background:var(--sand)}
-.story-section{background:var(--brown-deep);color:var(--cream)}
-.story-copy h2{color:var(--cream)}
-.story-copy h2 em,.contact-inner h2 em{color:var(--orange-soft)}
-.story-copy p{color:rgba(255,241,220,.82)}
-.story-image:after{border-color:var(--orange-soft)}
-.inside-section{background:#f3e1ca}
-.inside-layout h2{color:var(--brown-deep)}
-.inside-layout h2 em{color:var(--orange-deep)}
-.visit-section{background:var(--cream)}
-.visit-card{background:var(--orange-soft)}
-.visit-info{color:var(--brown-deep)}
-.visit-info h3{color:var(--brown-deep)}
-.visit-info>p{color:var(--brown-deep)}
-.visit-detail{border-top-color:rgba(38,20,14,.25)}
-.visit-info .btn-dark{background:var(--brown-deep);color:var(--cream)}
-.visit-info .btn-dark:hover{background:#170b07}
-.contact-section{background:#2b1710;color:var(--cream)}
-.contact-inner h2{color:var(--cream)}
-.contact-inner>p{color:rgba(255,241,220,.78)}
-.social-links{border-color:rgba(255,241,220,.25)}
-.social-links a{border-right-color:rgba(255,241,220,.18)}
-.social-links a:hover{background:rgba(245,138,82,.13)}
-.social-links span{color:var(--gold)}
-.social-links b{color:var(--cream)}
-.site-footer{background:#190d08;color:var(--cream)}
-.footer-inner p span{color:rgba(255,241,220,.64)}
-.fab{background:var(--orange);color:var(--brown-deep);box-shadow:0 8px 24px rgba(25,13,8,.28)}
-.fab:hover{background:var(--orange-soft)}
-.btn-dark{background:var(--brown-deep);color:var(--cream)}
-.btn-dark:hover{background:#170b07}
-.btn-cream{background:var(--cream);color:var(--brown-deep)}
-.eyebrow-orange{color:var(--orange-deep)}
-.eyebrow-light{color:var(--gold)}
-:focus-visible{outline-color:var(--orange-deep)}
-::selection{background:var(--brown-deep);color:var(--cream)}
-@media(max-width:680px){
-  .site-header nav{background:var(--paper);border-bottom-color:var(--line)}
-  .site-header nav a{border-bottom-color:var(--line);color:var(--brown-deep)}
-}
-
-/* Final art direction: balanced signature colour, refined surfaces and legible type */
+/* Brand theme refinements — intentional component-level overrides */
 :root{
   --brand-orange:#e9652b;
   --brand-orange-light:#f58a52;
