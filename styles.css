@@ -175,11 +175,12 @@ h3 { font: 600 clamp(1.5rem, 2.4vw, 2rem)/1.1 var(--serif); }
   pointer-events: none;
 }
 .hero .container { position: relative; z-index: 1; }
-.hero-text { max-width: 880px; }
-.hero-kicker, .section-kicker, .eyebrow, .about-kicker {
+ .hero-text { max-width: 880px; }
+.hero-kicker { color: var(--gold); }
+ .hero-kicker, .section-kicker, .eyebrow, .about-kicker {
   display: inline-block;
   margin-bottom: 22px;
-  color: var(--gold);
+  color: var(--brand);
   font-size: .67rem;
   font-weight: 700;
   letter-spacing: .19em;
