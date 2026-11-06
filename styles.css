@@ -53,7 +53,7 @@ h3{font:600 clamp(1.6rem,2.6vw,2.15rem)/1.05 var(--serif)}
 .nav .brand{flex:0 0 auto;margin-right:auto}
 .nav nav{flex:0 1 auto;margin-left:auto;order:2}
 .brand{display:inline-flex;align-items:center;gap:10px;color:var(--plum);font-size:1.05rem;font-weight:800;letter-spacing:.2em}
-.brand img{width:58px;height:58px;object-fit:contain}
+.brand img{width:58px;height:58px;aspect-ratio:1;border-radius:50%;object-fit:cover;object-position:center;overflow:hidden}
 .nav nav ul{display:flex;align-items:center;justify-content:flex-end;gap:clamp(20px,3vw,42px);margin:0;padding:0;list-style:none}
 .nav nav a{position:relative;display:inline-block;padding:9px 0;color:#51464c;font-size:.73rem;font-weight:700;letter-spacing:.06em;transition:color .35s var(--ease)}
 .nav nav a::after{position:absolute;right:0;bottom:3px;left:0;height:1px;background:var(--persimmon);content:"";transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
