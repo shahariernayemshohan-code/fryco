@@ -1,29 +1,48 @@
 # FRYCO Website
 
-FRYCO's website is a lightweight static site hosted with GitHub Pages.
+A lightweight, static website for FRYCO Bangladesh in Satkhira. The site is built with semantic HTML, CSS and browser-native JavaScript and is published through GitHub Pages.
 
-## Project files
+## Project structure
 
-| File | Purpose |
+| Path | Responsibility |
 | --- | --- |
-| `index.html` | Page content, contact details, SEO metadata and restaurant information |
-| `styles.css` | Brand colours, layout, component styles and responsive rules |
-| `menu-data.js` | Menu categories, item descriptions and prices |
-| `menu.js` | Menu rendering and keyboard-accessible category tabs |
-| `site.js` | Mobile navigation, scroll reveals and footer year |
-| Image files | Logo, food photography and restaurant photos |
+| `index.html` | Page structure, content, SEO metadata and restaurant structured data |
+| `styles.css` | Design tokens, component styles, responsive layouts and motion |
+| `menu-data.js` | The menu catalogue: categories, item names, descriptions and BDT prices |
+| `menu.js` | Menu rendering, category tabs, keyboard navigation and search |
+| `site.js` | Mobile navigation, scroll effects and footer year |
+| `scripts/check-site.mjs` | Dependency-free project checks run locally and in CI |
+| `.github/workflows/quality-check.yml` | Runs the project checks on pushes and pull requests |
+| Root image files | Logo, food photography and restaurant photography |
 
-## Common updates
+## Getting started
 
-### Change a menu item or price
+This is a static website. There is no bundler, framework, database or build step.
 
-Edit `menu-data.js`. Each item uses:
+1. Clone or download the repository.
+2. Open the project folder in your editor.
+3. Open `index.html` in a local web server or use a simple editor preview.
+4. Before publishing, run the quality checks:
+
+```sh
+npm run check
+```
+
+The check command requires Node.js 20 or newer and has no third-party package dependencies.
+
+## Common changes
+
+### Update a menu item or price
+
+Edit `menu-data.js`. Keep menu content in this file rather than hard-coding it into the page or renderer.
+
+A standard item:
 
 ```js
 createMenuItem("Item name", "Short description", 250)
 ```
 
-For different sizes or options, provide an array of label and price pairs:
+An item with sizes or options:
 
 ```js
 createMenuItem("Fries", "", [
@@ -32,27 +51,48 @@ createMenuItem("Fries", "", [
 ])
 ```
 
-### Change the website's appearance
+Prices are numbers in Bangladeshi taka (BDT). The renderer formats the currency for display.
 
-Edit `styles.css`. The main brand colour variables are defined in the first `:root` block. Keep styles grouped by the page component they affect.
+### Change colours or visual styling
 
-### Change page copy or business information
+Edit the design tokens in the first `:root` block in `styles.css`. Component styles are grouped in the same stylesheet. The final **Brand theme refinements** section contains deliberate component-level adjustments; check that section before adding another override for an existing component.
 
-Edit `index.html`. When changing the address, phone number or opening hours, also update the Restaurant structured data in the document head.
+Prefer editing the existing rule over appending repeated overrides. Avoid `!important` unless there is a documented reason.
 
-### Change interactions
+### Change page content or business information
 
-- Edit `menu.js` for menu tabs and menu cards.
-- Edit `site.js` for mobile navigation and scroll effects.
+Edit `index.html`. If the phone number, address, opening hours or public business identity changes, update the visible page content and the Restaurant JSON-LD structured data together. Also review the map destination and social links.
 
-## Technical notes
+### Change menu behaviour
 
-- This is a static HTML, CSS and JavaScript project. It has no build step or package dependencies.
-- Keep asset and script paths relative so the site works under the GitHub Pages project URL.
-- Do not delete or rename images until their references in HTML, CSS and metadata have been checked.
-- Test desktop and mobile layouts after changes. Check menu tabs, mobile navigation, links, map and image loading.
-- Confirm menu prices and business details with FRYCO before publishing.
+- `menu.js` owns category tabs, keyboard interaction, search and menu rendering.
+- `menu-data.js` owns the actual menu content and prices.
 
-## Publishing
+Keep content separate from presentation and behaviour.
 
-The repository's GitHub Pages configuration publishes the site. Commits to the configured publishing branch are deployed by GitHub Pages.
+### Change site-wide interactions
+
+Edit `site.js` for the mobile navigation, scroll header, reveal effects or footer year. Keep the navigation button's `aria-expanded` state in sync with its visible state. Do not move the hamburger button out of the header without checking the mobile layout and keyboard behaviour.
+
+## Code conventions
+
+- Use semantic HTML and accessible names for interactive controls.
+- Keep JavaScript inside small, focused functions and use strict mode.
+- Use relative paths for local assets so GitHub Pages project URLs continue to work.
+- Preserve meaningful image alt text and iframe titles.
+- Keep keyboard focus visible and respect `prefers-reduced-motion`.
+- Do not add a framework or dependency for a task that can be handled cleanly with the existing static stack.
+- Do not rename or remove assets until every reference has been checked.
+- Keep menu names and prices in `menu-data.js`; do not duplicate the catalogue in HTML.
+
+## Quality checks and publishing
+
+Run `npm run check` before opening a pull request or publishing. The checks verify JavaScript syntax, HTML IDs and internal anchors, local asset references, CSS block balance and menu catalogue structure.
+
+GitHub Actions runs the same checks on pushes and pull requests. A passing check does not replace browser testing: review the page at mobile and desktop widths and manually test navigation, menu search, category tabs, telephone links, directions, map and image loading.
+
+GitHub Pages publishes the configured branch. Allow the deployment to finish before reviewing the public site.
+
+## Business data
+
+Menu prices, contact details, opening hours and location are business information. Confirm them with FRYCO before publishing updates. The website currently presents a call-to-order contact link; do not describe online checkout, payment processing or an order-management dashboard as available unless those features are implemented separately.
