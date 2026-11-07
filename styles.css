@@ -122,11 +122,11 @@ h2 em,h1 em{color:var(--orange);font-style:normal}
 .photo figcaption{display:flex;flex-direction:column;gap:3px;padding:13px 15px 15px}
 .photo figcaption b{color:var(--brown);font-size:.65rem;font-weight:900;letter-spacing:.1em}
 .photo figcaption span{color:var(--muted);font-size:.72rem}
-/* Story */
+/* Story section: restaurant exterior and introduction */
 .story-section{overflow:hidden;background:var(--brown);color:var(--cream)}
 .story-layout{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(45px,8vw,110px)}
-.story-image{position:relative;padding:0 26px 26px 0}
-.story-image img{width:100%;height:clamp(370px,48vw,590px);object-fit:cover;border-radius:13px}
+.story-image{position:relative;padding:0}
+.story-image img{position:relative;z-index:1;width:100%;height:clamp(370px,48vw,590px);object-fit:cover;border-radius:14px;box-shadow:0 18px 38px rgba(0,0,0,.16)}
 /* Removed: decorative orange outline behind story image */
 
 .story-copy{position:relative;z-index:1}
