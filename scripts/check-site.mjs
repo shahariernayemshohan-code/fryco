@@ -112,7 +112,6 @@ if (html) {
 
   const referencedAssets = new Set([
     ...[...html.matchAll(/\bsrc=["']([^"']+)["']/g)].map((match) => match[1]),
-    ...[...css.matchAll(/url\\(["']?([^"')]+)["']?\\)/g)].map((match) => match[1])
   ].map((asset) => asset.split(/[?#]/, 1)[0]));
 
   const imageFiles = readdirSync(root, { withFileTypes: true })
