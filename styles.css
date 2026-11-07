@@ -124,12 +124,8 @@ h2 em,h1 em{color:var(--orange);font-style:normal}
 .photo figcaption span{color:var(--muted);font-size:.72rem}
 /* Story section: restaurant exterior and introduction */
 .story-section{overflow:hidden;background:var(--brown);color:var(--cream)}
-.story-layout{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(45px,8vw,110px)}
-.story-image{position:relative;padding:0}
-.story-image img{position:relative;z-index:1;width:100%;height:clamp(370px,48vw,590px);object-fit:cover;border-radius:14px;box-shadow:0 18px 38px rgba(0,0,0,.16)}
-/* Removed: decorative orange outline behind story image */
-
-.story-copy{position:relative;z-index:1}
+.story-layout{display:grid;grid-template-columns:1fr;align-items:center}
+.story-copy{position:relative;z-index:1;width:100%;max-width:760px;margin:0 auto}
 .story-copy h2{color:var(--cream);font-size:clamp(3.5rem,6vw,6.3rem)}
 .story-copy h2 em{color:var(--orange)}
 .story-copy p{max-width:490px;color:rgba(255,243,223,.78);font-size:.9rem;line-height:1.85}
@@ -191,7 +187,7 @@ a.contact-item:hover{background:rgba(245,138,82,.1)}
 .fab{position:fixed;z-index:25;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:12px;padding:13px 19px;border-radius:999px;background:var(--orange);color:white;box-shadow:0 8px 24px rgba(45,23,15,.24);font-size:.72rem;font-weight:900}
 @media(max-width:900px){
  .hero-layout{grid-template-columns:1fr  .82fr;gap:22px}.hero h1{font-size:clamp(4rem,10vw,7rem)}
- .story-layout{gap:42px}.visit-card{grid-template-columns:.9fr 1.1fr}
+ .visit-card{grid-template-columns:.9fr 1.1fr}
  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:680px){
@@ -232,9 +228,7 @@ a.contact-item:hover{background:rgba(245,138,82,.1)}
  .photo figcaption{padding:10px 11px 12px}
  .photo figcaption b{font-size:.59rem}
  .photo figcaption span{font-size:.65rem}
- .story-layout{grid-template-columns:1fr;gap:38px}
- .story-image{width:90%;margin:auto}
- .story-image img{height:clamp(300px,90vw,470px)}
+
  .story-copy h2{font-size:clamp(3.7rem,15vw,5.6rem)}
  .inside-layout{grid-template-columns:1fr;gap:28px}
  .inside-layout figure img{height:clamp(230px,62vw,360px)}
@@ -287,8 +281,8 @@ a.contact-item:hover{background:rgba(245,138,82,.1)}
 .btn-dark:hover,.fab:hover{box-shadow:0 12px 28px rgba(45,23,15,.22)}
 .photo{isolation:isolate}
 .photo img{will-change:transform}
-.story-image img,.inside-layout figure img{transition:transform .7s var(--ease),filter .5s ease}
-.story-image:hover img,.inside-layout figure:hover img{transform:scale(1.018);filter:saturate(1.04)}
+.inside-layout figure img{transition:transform .7s var(--ease),filter .5s ease}
+.inside-layout figure:hover img{transform:scale(1.018);filter:saturate(1.04)}
 .motion-reveal{opacity:0;transform:translate3d(0,22px,0);transition:opacity .72s var(--ease),transform .72s var(--ease);transition-delay:var(--motion-delay,0ms)}
 .motion-reveal.is-visible{opacity:1;transform:translate3d(0,0,0)}
 @media(hover:none){
@@ -298,7 +292,7 @@ a.contact-item:hover{background:rgba(245,138,82,.1)}
 @media(prefers-reduced-motion:reduce){
   .hero-copy,.hero-visual,.hero-sticker{animation:none!important}
   .motion-reveal{opacity:1!important;transform:none!important;transition:none!important}
-  .photo img,.story-image img,.inside-layout figure img{will-change:auto;transition:none!important}
+  .photo img,.inside-layout figure img{will-change:auto;transition:none!important}
 }
 
 /* Brand theme refinements — intentional component-level overrides */
@@ -406,7 +400,6 @@ body{
 }
 .story-copy p{color:rgba(255,247,235,.8)}
 .story-copy h2 em{color:#f58a52}
-.story-image img{box-shadow:0 18px 38px rgba(0,0,0,.16)}
 
 .inside-section{
   background:linear-gradient(135deg,#f4e5d1 0%,#f9eddd 52%,#efddc5 100%);
