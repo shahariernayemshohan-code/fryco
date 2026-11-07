@@ -163,7 +163,7 @@ h2 em,h1 em{color:var(--orange);font-style:normal}
 .social-links b{overflow-wrap:anywhere;color:var(--cream);font-size:.78rem}
 
 /* Contact information — icon-led details */
-.contact-details{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin-top:48px;border-top:1px solid rgba(255,247,235,.2);border-bottom:1px solid rgba(255,247,235,.2)}
+.contact-details{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:48px;border-top:1px solid rgba(255,247,235,.2);border-bottom:1px solid rgba(255,247,235,.2)}
 .contact-item{display:flex;min-width:0;align-items:center;gap:13px;padding:22px 14px;text-align:left;border-right:1px solid rgba(255,247,235,.14);transition:background .2s ease}
 .contact-item:last-child{border-right:0}
 a.contact-item:hover{background:rgba(245,138,82,.1)}
@@ -173,9 +173,9 @@ a.contact-item:hover{background:rgba(245,138,82,.1)}
 .contact-copy>b{color:#fff7eb;font-size:.76rem;font-weight:900}
 .contact-copy>span{overflow-wrap:anywhere;color:rgba(255,247,235,.76);font-size:.68rem;line-height:1.5}
 .contact-copy a{color:#f2c77e;text-decoration:underline;text-underline-offset:3px}
-@media(max-width:900px){.contact-details{grid-template-columns:repeat(2,minmax(0,1fr))}.contact-item:nth-child(2n){border-right:0}.contact-item{border-bottom:1px solid rgba(255,247,235,.14)}.contact-item:last-child{border-bottom:0}.contact-social{grid-column:1/-1}}
+@media(max-width:900px){.contact-details{grid-template-columns:repeat(2,minmax(0,1fr))}.contact-item:nth-child(2n){border-right:0}.contact-item{border-bottom:1px solid rgba(255,247,235,.14)}.contact-item:last-child,.contact-item:nth-last-child(2){border-bottom:0}}
 @media(max-width:680px){.contact-details{margin-top:34px}.contact-item{gap:11px;padding:17px 10px}.contact-icon{width:40px;height:40px}.contact-copy>b{font-size:.72rem}.contact-copy>span{font-size:.64rem}}
-@media(max-width:390px){.contact-details{grid-template-columns:1fr}.contact-item,.contact-item:nth-child(2n){border-right:0}.contact-social{grid-column:auto}}
+@media(max-width:390px){.contact-details{grid-template-columns:1fr}.contact-item,.contact-item:nth-child(2n){border-right:0}.contact-item:nth-last-child(2){border-bottom:1px solid rgba(255,247,235,.14)}}
 
 /* Footer and fixed call */
 .site-footer{padding:24px 0 calc(24px + env(safe-area-inset-bottom,0px));background:#21120d;color:var(--cream)}
