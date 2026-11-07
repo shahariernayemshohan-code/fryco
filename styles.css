@@ -112,6 +112,7 @@ h2 em,h1 em{color:var(--orange);font-style:normal}
 /* Photo gallery */
 .gallery-section{background:var(--paper)}
 .gallery-heading h2{margin-bottom:0}
+.gallery-menu-link{display:flex;justify-content:center;margin-top:clamp(28px,4vw,44px)}
 .photo-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:17px;align-items:start}
 .photo{position:relative;grid-column:span 4;overflow:hidden;margin:0;border-radius:14px;background:var(--sand)}
 .photo img{width:100%;height:clamp(190px,24vw,300px);object-fit:cover;transition:transform .6s var(--ease),filter .4s}
