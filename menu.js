@@ -76,7 +76,10 @@
   function renderGroups(category, query) {
     const groups = category.groups.map(group => {
       const matchingItems = group.items.filter(item => {
-        const haystack = [item.name, item.description, ...(Array.isArray(item.price) ? item.price.map(option => option[0]) : [])].join(" ").toLocaleLowerCase();
+        const priceLabels = Array.isArray(item.price) ? item.price.map(option => option[0]) : [];
+        const haystack = [item.name, item.description, ...priceLabels]
+          .join(" ")
+          .toLocaleLowerCase();
         return !query || haystack.includes(query);
       });
       if (!matchingItems.length) return "";
@@ -128,11 +131,20 @@
     let count = 0;
     const output = categories.map((category, index) => {
       const categoryGroups = category.groups.map(group => group.items.filter(item => {
-        const haystack = [item.name, item.description, ...(Array.isArray(item.price) ? item.price.map(option => option[0]) : [])].join(" ").toLocaleLowerCase();
+        const priceLabels = Array.isArray(item.price) ? item.price.map(option => option[0]) : [];
+        const haystack = [item.name, item.description, ...priceLabels]
+          .join(" ")
+          .toLocaleLowerCase();
         return haystack.includes(query);
       }));
       count += categoryGroups.reduce((sum, items) => sum + items.length, 0);
-      const filteredCategory = {...category, groups: category.groups.map((group, groupIndex) => ({...group, items: categoryGroups[groupIndex]}))};
+      const filteredCategory = {
+        ...category,
+        groups: category.groups.map((group, groupIndex) => ({
+          ...group,
+          items: categoryGroups[groupIndex]
+        }))
+      };
       const content = renderGroups(filteredCategory, query);
       return content ? `<div class="search-category"><h3 class="search-category-title">${escapeHtml(category.name)}</h3>${content}</div>` : "";
     }).join("");
