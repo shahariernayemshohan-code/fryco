@@ -111,12 +111,12 @@ if (html) {
   pass("Local HTML asset references were checked");
 
   const referencedAssets = new Set([
-    ...[...html.matchAll(/\\bsrc=["']([^"']+)["']/g)].map((match) => match[1]),
+    ...[...html.matchAll(/\bsrc=["']([^"']+)["']/g)].map((match) => match[1]),
     ...[...css.matchAll(/url\\(["']?([^"')]+)["']?\\)/g)].map((match) => match[1])
   ].map((asset) => asset.split(/[?#]/, 1)[0]));
 
   const imageFiles = readdirSync(root, { withFileTypes: true })
-    .filter((entry) => entry.isFile() && /\\.(?:avif|gif|jpe?g|png|svg|webp)$/i.test(entry.name))
+    .filter((entry) => entry.isFile() && /\.(?:avif|gif|jpe?g|png|svg|webp)$/i.test(entry.name))
     .map((entry) => entry.name);
   const unusedImages = imageFiles.filter((image) => !referencedAssets.has(image));
 
