@@ -52,7 +52,7 @@
   function revealContent() {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const targets = document.querySelectorAll(
-      ".section-heading, .story-image, .story-copy, .inside-layout > div, .inside-layout figure, " +
+      ".section-heading, .story-copy, .inside-layout > div, .inside-layout figure, " +
       ".photo, .visit-card, .social-links a, .card, .cat > h3"
     );
 
