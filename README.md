@@ -6,7 +6,7 @@ A lightweight, static website for FRYCO Bangladesh in Satkhira. The site is buil
 
 | Path | Responsibility |
 | --- | --- |
-| `index.html` | Page structure, content, SEO metadata and restaurant structured data |
+| `index.html` | Page structure, visible content, metadata and section order |
 | `styles.css` | Design tokens, component styles, responsive layouts and motion |
 | `menu-data.js` | The menu catalogue: categories, item names, descriptions and BDT prices |
 | `menu.js` | Menu rendering, category tabs, keyboard navigation and search |
@@ -61,7 +61,7 @@ Prefer editing the existing rule over appending repeated overrides. Avoid `!impo
 
 ### Change page content or business information
 
-Edit `index.html`. If the phone number, address, opening hours or public business identity changes, update the visible page content and the Restaurant JSON-LD structured data together. Also review the map destination and social links.
+Edit `index.html`. If the phone number, address, opening hours or social links change, update the matching visible contact details and links in `index.html`. Review the map destination too. This is an independent concept, so confirm business information with Fryco before treating it as official.
 
 ### Change menu behaviour
 
@@ -73,6 +73,16 @@ Keep content separate from presentation and behaviour.
 ### Change site-wide interactions
 
 Edit `site.js` for the mobile navigation, scroll header, reveal effects or footer year. Keep the navigation button's `aria-expanded` state in sync with its visible state. Do not move the hamburger button out of the header without checking the mobile layout and keyboard behaviour.
+
+## Editing safely
+
+1. Start with `index.html` for page sections and text.
+2. Start with `styles.css` for colours, spacing, typography and responsive layout. Update an existing selector before adding a new override.
+3. Start with `menu-data.js` for menu names, descriptions and prices. Do not edit generated menu markup in `menu.js` to change a price.
+4. Use `menu.js` only for menu behaviour and rendering.
+5. Use `site.js` only for navigation, scroll and small site-wide interactions.
+6. Keep image filenames stable unless every reference is updated. The quality check reports image files that are no longer used.
+7. Make one focused change at a time, run `npm run check`, then review the live page on mobile and desktop.
 
 ## Code conventions
 
@@ -87,7 +97,7 @@ Edit `site.js` for the mobile navigation, scroll header, reveal effects or foote
 
 ## Quality checks and publishing
 
-Run `npm run check` before opening a pull request or publishing. The checks verify JavaScript syntax, HTML IDs and internal anchors, local asset references, CSS block balance and menu catalogue structure.
+Run `npm run check` before opening a pull request or publishing. The checks verify JavaScript syntax, HTML IDs and internal anchors, local asset references, unused root-level images, CSS block balance and menu catalogue structure.
 
 GitHub Actions runs the same checks on pushes and pull requests. A passing check does not replace browser testing: review the page at mobile and desktop widths and manually test navigation, menu search, category tabs, telephone links, directions, map and image loading.
 
