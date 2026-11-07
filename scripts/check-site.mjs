@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -109,6 +109,22 @@ if (html) {
     if (!existsSync(path.join(root, assetPath))) errors.push(`Missing local asset: ${assetPath}`);
   }
   pass("Local HTML asset references were checked");
+
+  const referencedAssets = new Set([
+    ...[...html.matchAll(/\\bsrc=["']([^"']+)["']/g)].map((match) => match[1]),
+    ...[...css.matchAll(/url\\(["']?([^"')]+)["']?\\)/g)].map((match) => match[1])
+  ].map((asset) => asset.split(/[?#]/, 1)[0]));
+
+  const imageFiles = readdirSync(root, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && /\\.(?:avif|gif|jpe?g|png|svg|webp)$/i.test(entry.name))
+    .map((entry) => entry.name);
+  const unusedImages = imageFiles.filter((image) => !referencedAssets.has(image));
+
+  if (unusedImages.length) {
+    errors.push(`Unused root-level image files: ${unusedImages.join(", ")}`);
+  } else {
+    pass(`All ${imageFiles.length} root-level image files are used by the page or stylesheet`);
+  }
 
   const scriptTags = html.match(/<script\b[^>]*\bsrc=["'][^"']+["'][^>]*>/gi) || [];
   if (scriptTags.some((tag) => !/\bdefer\b/i.test(tag))) {
