@@ -501,3 +501,7 @@ body{
 .story-image{padding:0}
 .story-image:after{display:none}
 .story-image img{position:relative;z-index:1;border-radius:14px;box-shadow:0 18px 38px rgba(0,0,0,.16)}
+
+/* Definitively disable the decorative orange story-photo outline */
+.story-image::before,.story-image::after{content:none!important;display:none!important;border:0!important;outline:0!important;box-shadow:none!important}
+.story-image{padding:0!important;border:0!important;outline:0!important}
